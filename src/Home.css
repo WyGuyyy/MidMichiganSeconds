@@ -1,0 +1,20 @@
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    background: black;
+}
+
+.homeTopSection{
+    width: 100vw;
+    height: 100vh;
+}
+
+.Home-Header-Wrapper{
+    height: 15%;
+    width: 100%;
+}
+
+.Home-Slideshow-Wrapper{
+    height: 85%;
+    width: 100%;
+}

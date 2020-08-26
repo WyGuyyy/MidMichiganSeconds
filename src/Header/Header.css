@@ -1,0 +1,18 @@
+.headerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    width: 100%;
+    height: 70px;
+}
+
+.MMS-Title-Container{
+    padding-left: 2.5%;
+    height: 100%;
+}
+
+.hamburgerContainer{
+    padding-right: 2.5%;
+}
