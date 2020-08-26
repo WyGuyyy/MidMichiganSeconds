@@ -2,6 +2,8 @@ import React from 'react';
 import './Home.css';
 import Header from "./Header/Header"
 import Slideshow from "./Slideshow/Slideshow"
+import TextTile_TBT from "./Tiles/TextTile_TBT"
+import ImageTile from "./Tiles/ImageTile"
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -31,6 +33,11 @@ class Home extends React.Component{
                     </div>
                     <div className="Home-Slideshow-Wrapper">
                         <Slideshow />
+                    </div>
+                </section>
+                <section className="Home-Middle-Section">
+                    <div className="Home-WhatIs-Wrapper">
+                        <TextTile_TBT />
                     </div>
                 </section>
             </div>

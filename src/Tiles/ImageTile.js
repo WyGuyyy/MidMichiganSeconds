@@ -1,10 +1,9 @@
 import React from 'react';
-import './Slideshow.css';
-import Clock from "./Clock"
+import './ImageTile.css';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-class Slideshow extends React.Component{
+class ImageTile extends React.Component{
     constructor(props){
         super(props);
 
@@ -24,16 +23,17 @@ class Slideshow extends React.Component{
     render(){
 
         return(
-            <div className="slideshowContainer">
-                <div className="slideshowImage" />
-                <Clock />
+            <div className="Image-Tile-Container">
+                <div className="imageTile">
+
+                </div>
             </div>
         );
             
     }
 }
 
-export default Slideshow;
+export default ImageTile;
 
 
 //"react-router-dom": "^6.0.0-alpha.1",

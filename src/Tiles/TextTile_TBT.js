@@ -1,10 +1,9 @@
 import React from 'react';
-import './Slideshow.css';
-import Clock from "./Clock"
+import './TextTile_TBT.css';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-class Slideshow extends React.Component{
+class TextTile_TBT extends React.Component{
     constructor(props){
         super(props);
 
@@ -24,16 +23,17 @@ class Slideshow extends React.Component{
     render(){
 
         return(
-            <div className="slideshowContainer">
-                <div className="slideshowImage" />
-                <Clock />
+            <div className="Text-Tile-TBT-Container">
+                <h2 className="Text-Tile-TBT-Title"></h2>
+                <div className="Text-Tile-TBT-Bar" />
+                <p className="Text-Tile-TBT-Text"></p>
             </div>
         );
             
     }
 }
 
-export default Slideshow;
+export default TextTile_TBT;
 
 
 //"react-router-dom": "^6.0.0-alpha.1",

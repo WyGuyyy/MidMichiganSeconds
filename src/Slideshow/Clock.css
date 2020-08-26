@@ -2,4 +2,22 @@
     height: 15%;
     width: 100%;
     background: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.clockWrapper{
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.clockText{
+    font-size: 70px;
+    font-family: "digital-clock-font";
 }
