@@ -1,0 +1,320 @@
+* CSS Variables */
+:root{
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    /*color: var(--dark);*/
+}
+
+body{
+    /*background: #ccc;*/
+    /*background: var(--dark);*/
+    line-height: 1.4;
+    /*margin: 30px 50px;*/
+    /*overflow: auto;*/
+    transition: background-color .5s;
+    /*animation: animatedBackground 40s linear infinite;*/
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+    /*background: rgba(11, 240, 248, 0);*/
+}
+
+#wrapper-checkout-main{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    'top top top'
+    'timeline timeline timeline'
+    'checkout checkout checkout'
+    'back back back';
+    /*transition: margin-left .5s;*/
+    margin: 30px 50px;
+}
+
+#wrapper-checkout{
+    grid-area: checkout;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#paypal-form-checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#paypal-button-checkout{
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 14px 80px;
+    cursor: pointer;
+    color: black;
+    background-color: rgb(0, 150, 37);
+    font-size: 1.5rem;
+    font-family: 'Roboto';
+    font-weight: 100;
+    border: none;
+    box-shadow: 2px 2px 20px black;
+    margin-top: 30px;
+    transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+}
+
+#paypal-button-checkout:hover{
+    color: black;
+    background-color: rgb(21, 255, 79);
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+#top-container-checkout{
+    grid-area: top;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px black;
+    margin-bottom: 30px;
+}
+
+#title-root-checkout{
+    display: flex;
+}
+
+#logo-root-checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#logo-checkout{
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*box-shadow: var(--shadow);*/
+}
+
+#main-title-checkout{
+    color: white;
+    font-size: 50px;
+}
+
+#paypal-cost-header-checkout{
+    color: white;
+}
+
+#paypal-cost-text-checkout{
+    color: white;
+}
+
+#back-button-checkout{
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(133, 1, 1);
+    font-size: 2rem;
+    font-family: 'Roboto';
+    font-weight: 100;
+    border: none;
+    transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#back-button-checkout:hover{
+    background-color: rgb(255, 79, 79);
+    color: black;
+}
+
+/***************************/
+/* Side nav menu */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: rgba(0, 171, 74, 1);
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+/***************************/
+
+
+@media(max-width: 1000px){
+
+    #main-title-checkout{
+        font-size: 30px;
+    }
+
+    #logo-checkout{
+        width: 60px;
+        height: 60px;
+    }
+
+    #paypal-cost-header-checkout{
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 1000px){
+
+    #main-title-checkout{
+        font-size: 30px;
+    }
+
+    #logo-checkout{
+        width: 60px;
+        height: 60px;
+    }
+
+    #back-button-upload{
+        font-size: 1.7rem;
+    }
+
+    #checkout-button-upload{
+        font-size: 1.7rem;
+    }
+
+}
+
+
+@media(max-width: 750px){
+
+    #main-title-checkout{
+        font-size: 25px;
+    }
+
+    #logo-checkout{
+        width: 50px;
+        height: 50px;
+    }
+
+    #back-button-upload{
+        font-size: 1.3rem;
+    }
+
+    #checkout-button-upload{
+        font-size: 1.3rem;
+    }
+
+    #paypal-cost-header-checkout{
+        font-size: 1.5rem;
+    }
+}
+
+@media(max-width: 620px){
+
+    #back-button-upload{
+        font-size: 1rem;
+    }
+
+    #checkout-button-upload{
+        font-size: 1rem;
+    }
+
+    #paypal-cost-header-checkout{
+        font-size: 1.3rem;
+    }
+}
+
+@media(max-width: 550px){
+
+    #main-title-checkout{
+        font-size: 20px;
+    }
+
+    #logo-checkout{
+        width: 40px;
+        height: 40px;
+    }
+
+    #back-button-upload{
+        font-size: 0.8rem;
+    }
+
+    #checkout-button-upload{
+        font-size: 0.8rem;
+    }
+
+    #paypal-cost-header-checkout{
+        font-size: 1.2rem;
+    }
+    
+}
+
+@media(max-width: 450px){
+
+    #main-title-checkout{
+        font-size: 20px;
+    }
+
+    #logo-checkout{
+        display: none;
+    }
+
+    #back-button-upload{
+        font-size: 0.6rem;
+    }
+
+    #checkout-button-upload{
+        font-size: 0.6rem;
+    }
+}
+

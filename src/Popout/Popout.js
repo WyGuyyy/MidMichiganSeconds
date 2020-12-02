@@ -27,6 +27,14 @@ class Popout extends React.Component{
         
     }
 
+    goToHome(event){
+        this.state.history.push("/");
+    }
+
+    goToPicktime(event){
+        this.state.history.push("/Picktime");
+    }
+
     goToFAQ(event){
         this.state.history.push("/FAQ");
     }
@@ -42,7 +50,8 @@ class Popout extends React.Component{
 
             <div className="popoutContainer">
                 <div className="popoutWrapper">
-                    <button className="popoutButton">REGISTER</button>
+                    <button className="popoutButton" onClick={e => this.goToHome(e)}>HOME</button>
+                    <button className="popoutButton" onClick={e => this.goToPicktime(e)}>REGISTER</button>
                     <button className="popoutButton" onClick={e => this.goToFAQ(e)}>FAQS</button>
                     <button className="popoutButton" onClick={e => this.goToTestimonials(e)}>TESTIMONIALS</button>
                     <button className="popoutButton">TERMS & CONDITIONS</button>

@@ -29,31 +29,34 @@
 
 .FAQ-Content-Header{
     width: 98%;
-    height: 350px;
+    height: 500px;
 }
 
 .FAQ-Content-Header-Tile{
-    width: 400px;
-    height: 200px;
+    width: 600px;
+    height: 100px;
     position: absolute;
     left: 50%;
     top: 70px;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    background: chartreuse;
+    background: #ffffff;
+    box-shadow: 2px 2px 10px black;
 }
 
 .FAQ-Content-Header-Title{
-
+    font-size: 50px;
 }
 
 .FAQ-Content-Header-Image{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
 }
 
 .FAQ-Content-Wrapper{
@@ -63,21 +66,48 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: -50px;
 }
 
-.FAQ-Content{
+.FAQ-Content-1{
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #ffffff;
+    padding: 10px;
+}
+
+.FAQ-Content-2{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #eeeeee;
+    padding: 10px;
 }
 
 .FAQ-Title{
     text-align: center;
+    font-size: 30px;
 }
 
 .FAQ-Text{
     text-align: center;
+    font-size: 20px;
 }
 
+@media(max-width: 660px){
+    .FAQ-Content-Header-Tile{
+        width: 300px;
+    }
+}
 
+@media(max-width: 320px){
+    .FAQ-Content-Header-Tile{
+        width: 90%;
+    }
+}
