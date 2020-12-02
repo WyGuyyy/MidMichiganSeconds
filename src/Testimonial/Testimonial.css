@@ -1,0 +1,25 @@
+.testimonialContainer{
+    display: flex;
+    flex-direction: column;
+    background: #386880;
+}
+
+.Testimonial-Top-Section{
+    width: 100%;
+    height: 1025px;
+}
+
+.Testimonial-Header-Wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 75px;
+    width: 100%;
+}
+
+.Testimonial-Content-Section{
+    width: 100%;
+    height: 3900px;
+}
+
+

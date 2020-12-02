@@ -1,0 +1,15 @@
+.Image-Tile-Container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageTile{
+    /*background-image: url(../Assets/midmi.jpg);*/
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    height: 90%;
+}

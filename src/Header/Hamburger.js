@@ -59,7 +59,7 @@ class Hamburger extends React.Component{
     render(){
 
         return(
-            <div className="hamburgerWrapper">
+            <div className="hamburgerWrapper" onClick={this.props.hamClick}>
                 <div className="hamburger-bar-1"></div>
                 <div className="hamburger-bar-2"></div>
                 <div className="hamburger-bar-3"></div>

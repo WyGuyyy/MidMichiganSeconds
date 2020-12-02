@@ -1,0 +1,83 @@
+.faqContainer{
+    display: flex;
+    flex-direction: column;
+    background: #386880;
+}
+
+.FAQ-Top-Section{
+    width: 100%;
+    height: 70px;
+}
+
+.FAQ-Header-Wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 75px;
+    width: 100%;
+}
+
+.FAQ-Content-Section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #386880;
+}
+
+.FAQ-Content-Header{
+    width: 98%;
+    height: 350px;
+}
+
+.FAQ-Content-Header-Tile{
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: chartreuse;
+}
+
+.FAQ-Content-Header-Title{
+
+}
+
+.FAQ-Content-Header-Image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.FAQ-Content-Wrapper{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FAQ-Content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FAQ-Title{
+    text-align: center;
+}
+
+.FAQ-Text{
+    text-align: center;
+}
+
+

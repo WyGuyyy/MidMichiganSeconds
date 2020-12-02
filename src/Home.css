@@ -13,25 +13,418 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 8%;
+    height: 75px;
     width: 100%;
 }
 
 .Home-Slideshow-Wrapper{
-    height: 90%;
     width: 100%;
     padding-bottom: 25px;
 }
 
 .Home-Middle-Section{
     width: 100%;
-    height: 3075px;
+    height: 3900px;
 }
 
 .Home-WhatIs-Wrapper{
     width: 100%;
-    height: 33%;
-    background-image: url(assets/midmi.jpg);
+    height: 1200px;
+    background-image: url(Assets/midmi.jpg);
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Home-Tile-Wrapper{
+    width: 100%;
+    background: #386880;
+    /*display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;*/
+}
+
+.Home-Tile-Grid{
+    width: 100%;
+    height: 1500px;
+    position: relative;
+    display: grid;
+    grid-template-areas:
+    'tile1 tile2 tile3'
+    'tile4 float tile5'
+    'tile6 tile7 tile8';
+    justify-content: center;
+    align-items: center;
+    /*display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;*/
+}
+
+.Home-Tile-Row1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Home-Tile-Row2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Home-Tile-Row3{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.floatingTile{
+    z-index: 2;
+    position: absolute;
+    grid-area: float;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Home-Meet-Wrapper{
+    width: 100%;
+    height: 1200px;
+    background: #386880;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'text image';
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.Meet-Area-Text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.Meet-Area-Images{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Meet-Area-Title{
+    color: white;
+    font-size: 50px;
+}
+
+.Meet-Area-Par{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.Image-Wyatt-Wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Image-Jason-Wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.imageWyatt{
+    margin-right: 10px;
+    height: 400px;
+    width: 267px;
+}
+
+.imageJason{
+    height: 400px;
+    width: 267px;
+    margin-right: 20px;
+}
+
+.captionWyatt{
+    color: white;
+}
+
+.captionJason{
+    color: white;
+}
+
+.Home-Bottom-Section{
+    width: 100%;
+    height: 1200px;
+    position: relative;
+    background: black;
+}
+
+.Home-Actions-Wrapper{
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.Home-Subscribe-Wrapper{
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribeLabel{
+    color: white;
+    margin-right: 20px;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.subscribeInput{
+    width: 350px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.homeFooter{
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+}
+
+.Home-Footer-Text{
+    color: white;
+}
+
+@media(max-width: 1500px){
+    .Home-Middle-Section{
+        height: 5000px;
+    }
+
+    .Home-Tile-Grid{
+        display: grid;
+        grid-template-areas:
+        'tile1 tile2'
+        'tile3 tile4'
+        'tile5 tile6'
+        'tile7 tile8';
+        justify-content: center;
+        align-items: center;
+        height: 2000px;
+    }
+
+    .Home-Tile-Wrapper{
+        height: 2600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .floatingTile{
+        z-index: 2;
+        position: absolute;
+        grid-area: float;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, -100%);
+    }
+}
+
+@media(max-width: 1350px){
+
+    .Home-Meet-Wrapper{
+        width: 100%;
+        height: 1200px;
+        background: #386880;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        text-align: center;
+    }
+    
+    .imageJason{
+        height: 400px;
+        margin-right: 0px;
+    }
+}
+
+@media(max-width: 1023px){ /* start here next time - get this media query set */
+    
+    .Home-Bottom-Section{
+        height: 3260px;
+    }
+    
+    .Home-Actions-Wrapper{
+        width: 100%;
+        height: 3060px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 50px;
+    }
+}
+
+@media(max-width: 999px){ /* start here next time - get this media query set */
+    .Home-Middle-Section{
+        height: 6900px;
+    }
+
+    .Home-Tile-Grid{
+        display: grid;
+        grid-template-areas:
+        'tile1'
+        'tile2'
+        'tile3'
+        'tile4'
+        'tile5'
+        'tile6'
+        'tile7'
+        'tile8';
+        justify-content: center;
+        align-items: center;
+        height: 4000px;
+    }
+
+    .Home-Tile-Wrapper{
+        height: 4500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .floatingTile{
+        z-index: 2;
+        position: absolute;
+        grid-area: float;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, -100%);
+    }
+}
+
+@media(max-width: 850px){ /* start here next time - get this media query set */
+
+    .Home-Bottom-Section{
+        height: 3300px;
+    }
+    
+    .Home-Subscribe-Wrapper{
+        height: 145px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subscribeLabel{
+        margin-bottom: 20px;
+        margin-right: 0px;
+    }
+    
+}
+
+@media(max-width: 600px){ /* start here next time - get this media query set */
+
+    .Home-Middle-Section{
+        height: 7300px;
+    }
+
+    .Meet-Area-Title{
+        color: white;
+        font-size: 40px;
+    }
+    
+    .Meet-Area-Par{
+        font-size: 20px;
+    }
+    
+    .Meet-Area-Images{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .Home-Meet-Wrapper{
+        height: 1600px;
+    }
+
+    .imageJason{
+        margin-top: 20px;
+    }
+    
+}
+
+@media(max-width: 475px){ /* start here next time - get this media query set */
+    
+    .Home-Middle-Section{
+        height: 7800px;
+    }
+    
+    .Home-Meet-Wrapper{
+        height: 2100px;
+    }
+}
+
+@media(max-width: 425px){ /* start here next time - get this media query set */
+
+    .Home-Bottom-Section{
+        height: 2400px;
+    }
+
+    .Home-Actions-Wrapper{
+        height: 2160px;
+    }
+
+    .subscribeLabel{
+        font-size: 20px;
+    }
+
+    .subscribeInput{
+        width: 85%;
+    }
+
+    .homeFooter{
+        font-size: 15px;
+    }
+
 }

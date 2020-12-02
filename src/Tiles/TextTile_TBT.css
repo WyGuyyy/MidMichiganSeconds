@@ -1,0 +1,70 @@
+.Text-Tile-TBT-Container{
+    position: relative;
+    width: 80%;
+    height: 50%;
+    background: #386880;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: -15px;
+    /*box-shadow: rgba(rgb(0, 0, 0), green, blue, alpha)*/
+}
+
+.Text-Tile-TBT-Title{
+    color: white;
+    margin-bottom: 40px;
+    font-size: 50px;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.Text-Tile-TBT-Bar{
+    width: 60%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.Text-Tile-TBT-Text{
+    color: white;
+    text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 20px;
+}
+
+@media(max-width: 950px){
+
+    .Text-Tile-TBT-Title{
+        font-size: 40px;
+    }
+
+    .Text-Tile-TBT-Text{
+        font-size: 15px;
+    }
+
+    .Text-Tile-TBT-Container{
+        width: 85%;
+        height: 60%;
+    }
+
+}
+
+@media(max-width: 375px){
+
+    .Text-Tile-TBT-Title{
+        font-size: 30px;
+    }
+
+    .Text-Tile-TBT-Text{
+        font-size: 13px;
+    }
+
+}
+
+
