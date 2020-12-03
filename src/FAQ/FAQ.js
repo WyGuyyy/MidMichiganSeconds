@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from "react-dom"
 import './FAQ.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import midmiclipped from '../Assets/midmiclipped.PNG';
+import { PayPalButton } from "react-paypal-button-v2";
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -24,6 +26,24 @@ class FAQ extends React.Component{
     componentWillUnmount(){
 
     }
+
+    createOrder(data, actions) {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: "0.01",
+              },
+            },
+          ],
+        });
+      }
+    
+      onApprove(data, actions) {
+          alert("hi");
+       
+          //Call backend here
+      }
     
     render(){
 
@@ -82,6 +102,10 @@ class FAQ extends React.Component{
                         </div>
                     </div>
                 </section>
+                <PayPalButton
+                    createOrder={(data, actions) => this.createOrder(data, actions)}
+                    onApprove={(data, actions) => this.onApprove(data, actions)}
+                />
             </div>
         );
             
