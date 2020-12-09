@@ -40,8 +40,8 @@ class FAQ extends React.Component{
       }
     
       onApprove(data, actions) {
-          alert("hi");
-       
+          
+        fetch()
           //Call backend here
       }
     
@@ -103,8 +103,12 @@ class FAQ extends React.Component{
                     </div>
                 </section>
                 <PayPalButton
-                    createOrder={(data, actions) => this.createOrder(data, actions)}
-                    onApprove={(data, actions) => this.onApprove(data, actions)}
+                    options={{
+                        clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
+                        disableFunding: "card"
+                    }}
+                    amount={0.1}
+                    currency={'USD'}
                 />
             </div>
         );
