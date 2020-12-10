@@ -84,6 +84,8 @@ class Dropdown extends React.Component{
                 }
 
                 itemWrapper.id = title + "-" + count;
+                item.id = "text-" + title + "-" + count;
+
                 item.textContent = value[count].value;
 
                 itemWrapper.appendChild(item);

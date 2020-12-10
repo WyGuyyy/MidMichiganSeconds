@@ -229,17 +229,46 @@ class Picktime extends React.Component{
         var secondsArr = this.state.seconds;
         var pivot = this.state.pivot;
 
+        var count = 0;
+
         if(pivot === -1){
             return;
         }
 
         if(pivot > idNum){
 
-            
+            for(count = 0; count < 60; count++){
+                if(count === idNum){
+                    for(count = count; count <= pivot; count++){
+                        document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                    }
+                }
+
+                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
+            }
 
         }else if(pivot < idNum){
 
+            for(count = 0; count < 60; count++){
+                if(count === pivot){
+                    for(count = count; count <= idNum; count++){
+                        document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                    }
+                }
+
+                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
+            }
+
         }else{
+
+            for(count = 0; count < 60; count++){
+                if(count === pivot){
+                    document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                    count++;
+                }
+
+                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
+            }
 
         }
 
