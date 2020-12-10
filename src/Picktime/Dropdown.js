@@ -38,7 +38,7 @@ class Dropdown extends React.Component{
         var dropdownMenu = document.getElementsByClassName("menuDropdown")[index];
 
         var items = this.state.items;
-        var title = this.state.title;
+        var title = this.state.itemTitle;
         var count = 0;
 
         for(count = 0; count < items.length; count++){
@@ -49,6 +49,8 @@ class Dropdown extends React.Component{
             item.classList.add('dropdownItem');
 
             itemWrapper.id = title + "-" + count;
+            item.id = "text-" + title + "-" + count;
+
             item.textContent = items[count].value + add;
 
             itemWrapper.appendChild(item);

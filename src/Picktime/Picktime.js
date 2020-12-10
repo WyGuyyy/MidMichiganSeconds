@@ -19,7 +19,8 @@ class Picktime extends React.Component{
             seconds: [],
             times: [],
             ctrl: false,
-            shift: false
+            shift: false,
+            pivot: -1
         };
 
     }
@@ -115,9 +116,17 @@ class Picktime extends React.Component{
     }
 
     hourClick(event){
-        var id = event.target.id;
+        var id = event.target.id.replace("text-", "");
 
-        if(this.state.hour === parseInt(id.split("-")[1])){
+        if(id.localeCompare("") === 0){
+            return;
+        }
+
+        var splitArr = id.split("-");
+
+        var idNum = parseInt(splitArr[1]) + 1;
+
+        if(this.state.hour === idNum){
             var hourWrapper = document.getElementById(id);
             hourWrapper.style.background = "rgb(0, 0, 0)";
 
@@ -128,16 +137,28 @@ class Picktime extends React.Component{
             var hourWrapper = document.getElementById(id);
             hourWrapper.style.background = "rgb(65, 65, 65)";
 
+            if(!(this.state.hour === -1)){
+                document.getElementById("Hour-" + (this.state.hour - 1)).style.background = "rgb(0, 0, 0)";
+            }
+
             this.setState({
-                hour: id.split("-")[1]
+                hour: idNum
             });
         }
     }
 
     minuteClick(event){
-        var id = event.target.id;
+        var id = event.target.id.replace("text-", "");
 
-        if(this.state.minute === parseInt(id.split("-")[1])){
+        if(id.localeCompare("") === 0){
+            return;
+        }
+
+        var splitArr = id.split("-");
+
+        var idNum = parseInt(splitArr[1]);
+
+        if(this.state.minute === idNum){
             var minuteWrapper = document.getElementById(id);
             minuteWrapper.style.background = "rgb(0, 0, 0)";
      
@@ -148,13 +169,106 @@ class Picktime extends React.Component{
             var minuteWrapper = document.getElementById(id);
             minuteWrapper.style.background = "rgb(65, 65, 65)";
 
+            if(!(this.state.minute === -1)){
+                document.getElementById("Minute-" + this.state.minute).style.background = "rgb(0, 0, 0)";
+            }
+
             this.setState({
-                minute: id.split("-")[1]
+                minute: idNum
             });
         }
     }
 
-    secondClick(){
+    secondClick(event){
+
+        var id = event.target.id.replace("text-", "");
+
+        if(id.localeCompare("") === 0){
+            return;
+        }
+
+        var splitArr = id.split("-");
+
+        if(this.state.ctrl){
+            this.handleCtrl(splitArr);
+        }else if(this.state.shift){
+            this.handleShift(splitArr);
+        }else{
+            this.handleSingle(splitArr);
+        }
+    }
+
+    handleCtrl(splitArr){
+        
+        var idNum = parseInt(splitArr[1]);
+        var secondsArr = this.state.seconds;
+        var newPivot = -1;
+
+        if(secondsArr.includes(idNum)){
+            document.getElementById("Second-" + idNum).style.background = "rgb(0, 0, 0)";
+            var index = secondsArr.indexOf(idNum);
+            secondsArr.splice(index);
+            
+            newPivot = (secondsArr.length > 0 ? secondsArr[secondsArr.length - 1] : -1);
+        }else{
+            document.getElementById("Second-" + idNum).style.background = "rgb(65, 65, 65)";
+            secondsArr.push(idNum);
+            newPivot = idNum;
+        }
+
+        this.setState({
+            seconds: secondsArr,
+            pivot: newPivot
+        });
+
+    }
+
+    handleShift(splitArr){
+
+        var idNum = parseInt(splitArr[1]);
+        var secondsArr = this.state.seconds;
+        var pivot = this.state.pivot;
+
+        if(pivot === -1){
+            return;
+        }
+
+        if(pivot > idNum){
+
+            
+
+        }else if(pivot < idNum){
+
+        }else{
+
+        }
+
+    }
+
+    handleSingle(splitArr){
+        
+        var idNum = parseInt(splitArr[1]);
+        var secondsArr = this.state.seconds;
+        var newPivot = -1;
+
+        if(secondsArr.includes(idNum)){
+            document.getElementById("Second-" + idNum).style.background = "rgb(0, 0, 0)";
+            secondsArr.splice(0);
+            
+            newPivot = -1;
+        }else{
+            document.getElementById("Second-" + idNum).style.background = "rgb(65, 65, 65)";
+            var oldID = secondsArr.pop();
+            secondsArr.push(idNum);
+            newPivot = idNum;
+
+            document.getElementById("Second-" + oldID).style.background = "rgb(0, 0, 0)";
+        }
+
+        this.setState({
+            seconds: secondsArr,
+            pivot: newPivot
+        });
 
     }
 
