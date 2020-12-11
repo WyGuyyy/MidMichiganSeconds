@@ -18,6 +18,7 @@ class Picktime extends React.Component{
             minute: -1,
             seconds: [],
             times: [],
+            available: [],
             ctrl: false,
             shift: false,
             pivot: -1
@@ -103,7 +104,7 @@ class Picktime extends React.Component{
     }
 
     getSeconds(){
-        var secondArr = [];
+        var availableArr = [];
         var count = 0;
 
         var ampm = this.state.ampm;
@@ -229,21 +230,18 @@ class Picktime extends React.Component{
         var secondsArr = this.state.seconds;
         var pivot = this.state.pivot;
 
+        var data = getUsedSeconds(this.state.ampm, this.state.hour, this.state.minute);
+
         var count = 0;
 
         if(pivot === -1){
-            return;
-        }
 
-        if(pivot > idNum){
+            for(count = 0; count < idNum; count++){
+                document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                secondsArr.push(count);
+            }
 
-            for(count = 0; count < 60; count++){
-                if(count === idNum){
-                    for(count = count; count <= pivot; count++){
-                        document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
-                    }
-                }
-
+            for(count = count; count < 60; count++){
                 document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
             }
 
@@ -262,9 +260,10 @@ class Picktime extends React.Component{
         }else{
 
             for(count = 0; count < 60; count++){
-                if(count === pivot){
-                    document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
-                    count++;
+                if(count === idNum){
+                    for(count = count; count <= pivot; count++){
+                        document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                    }
                 }
 
                 document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
