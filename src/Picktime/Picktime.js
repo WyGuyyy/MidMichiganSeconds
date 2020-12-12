@@ -18,6 +18,8 @@ class Picktime extends React.Component{
             minute: -1,
             seconds: [],
             times: [],
+            focusedTimes: [],
+            timePivot: -1,
             available: [],
             ctrl: false,
             shift: false,
@@ -63,24 +65,6 @@ class Picktime extends React.Component{
         }
     }
 
-    /*createOrder(data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: "0.01",
-              },
-            },
-          ],
-        });
-      }
-    
-      onApprove(data, actions) {
-          
-        fetch()
-          //Call backend here
-      }*/
-
     produceHourArray(){
         var hourArr = [];
         var count = 0;
@@ -114,6 +98,196 @@ class Picktime extends React.Component{
         var data = getUsedSeconds(ampm, hour, minute);
 
         return data;
+    }
+
+    addTimes(event){
+
+        var ampm = this.state.ampm;
+        var hour = (this.state.hour <= 9 ? "0" + this.state.hour : "" + this.state.hour);
+        var minute = (this.state.minute <= 9 ? "0" + this.state.minute : "" + this.state.minute);
+        var seconds = this.state.seconds;
+
+        var time = "";
+        var timesArr = [];
+        var currSecond = 0;
+        var count = 0;
+
+        var selectedList = document.getElementsByClassName("Picktime-Selected-List")[0];
+        var listItem = "";
+        var listItemText = "";
+
+        for(count = 0; count < seconds.length; count++){
+            currSecond = (seconds[count] <= 9 ? "0" + seconds[count] : "" + seconds[count]);
+            time = hour + ":" + minute + ":" + currSecond + " " + ampm;
+
+            timesArr.push(time);
+
+            listItem = document.createElement("div");
+            listItemText = document.createElement("h2");
+
+            listItem.onclick = e => this.focusTimes(e);
+
+            listItem.id = "Selected-" + count;
+            listItemText.id = "Text-Selected-" + count;
+
+            listItem.classList.add("Picktime-Selected-Item");
+            listItemText.classList.add("Picktime-Selected-Item-Text");
+
+            listItemText.textContent = time;
+
+            listItem.appendChild(listItemText);
+            selectedList.appendChild(listItem);
+
+            document.getElementById("Second-" + seconds[count]).style.background = "rgb(0, 0, 0)";
+        }
+
+        document.getElementById("Minute-" + this.state.minute).style.background = "rgb(0, 0, 0)";
+        document.getElementById("Hour-" + (this.state.hour - 1)).style.background = "rgb(0, 0, 0)";
+
+        this.setState({
+            hour: -1,
+            minute: -1,
+            seconds: [],
+            times: timesArr
+        });
+
+    }
+
+    focusTimes(event){
+
+        console.log("hererer");
+
+        var id = event.target.id.replace("Text-", "");
+
+        if(id.localeCompare("") === 0){
+            return;
+        }
+
+        var splitArr = id.split("-");
+
+        if(this.state.shift){
+            this.handleTimeShift(splitArr);
+        }else if(this.state.ctrl){
+            this.handleTimeCtrl(splitArr);
+        }else{
+            this.handleTimeSingle(splitArr);
+        }
+
+    }
+
+    handleTimeShift(splitArr){
+
+        var idNum = parseInt(splitArr[1]);
+        var focusedTimes = [];
+        var times = this.state.times;
+        var timePivot = this.state.timePivot;
+
+        var data = getUsedSeconds(this.state.ampm, this.state.hour, this.state.minute);
+
+        var count = 0;
+
+        if(timePivot === -1){
+
+            for(count = 0; count < idNum; count++){
+                document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
+                focusedTimes.push(count);
+            }
+
+            for(count = count; count < times.length; count++){
+                document.getElementById("Selected-" + count).style.background = "rgb(0, 0, 0)";
+            }
+
+        }else if(timePivot < idNum){
+
+            for(count = 0; count < times.length; count++){
+                document.getElementById("Selected-" + count).style.background = "rgb(0, 0, 0)";
+                if(count === timePivot){
+                    for(count = count; count <= idNum; count++){
+                        document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
+                        focusedTimes.push(count);
+                    }
+                }
+            }
+
+        }else{
+
+            for(count = 0; count < times.length; count++){
+                document.getElementById("Selected-" + count).style.background = "rgb(0, 0, 0)";
+                if(count === idNum){
+                    for(count = count; count <= timePivot; count++){
+                        document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
+                        focusedTimes.push(count);
+                    }
+                }
+            }
+
+        }
+
+        this.setState({
+            seconds: focusedTimes
+        });
+
+    }
+
+    handleTimeCtrl(splitArr){
+
+        var idNum = parseInt(splitArr[1]);
+        var newFocusedTimes = this.state.focusedTimes;
+        var newTimePivot = -1;
+
+        if(newFocusedTimes.includes(idNum)){
+            document.getElementById("Selected-" + idNum).style.background = "rgb(0, 0, 0)";
+            var index = newFocusedTimes.indexOf(idNum);
+            newFocusedTimes.splice(index);
+            
+            newTimePivot = (newFocusedTimes.length > 0 ? newFocusedTimes[newFocusedTimes.length - 1] : -1);
+        }else{
+            document.getElementById("Selected-" + idNum).style.background = "rgb(97, 183, 226)";
+            newFocusedTimes.push(idNum);
+            newTimePivot = idNum;
+        }
+
+        this.setState({
+            focusedTimes: newFocusedTimes,
+            timePivot: newTimePivot
+        });
+
+    }
+
+    handleTimeSingle(splitArr){
+        var idNum = parseInt(splitArr[1]);
+        var focusedTimes = this.state.focusedTimes;
+        var newTimePivot = -1;
+        var oldID = -1;
+        var count = 0;
+
+        if(focusedTimes.includes(idNum)){
+
+            for(count = 0; count < focusedTimes.length; count++){
+                oldID = focusedTimes[count];
+                document.getElementById("Selected-" + oldID).style.background = "rgb(0, 0, 0)";
+            }
+
+            focusedTimes = [];
+            newTimePivot = -1;
+        }else{
+
+            for(count = 0; count < focusedTimes.length; count++){
+                oldID = focusedTimes[count];
+                document.getElementById("Selected-" + oldID).style.background = "rgb(0, 0, 0)";
+            }
+
+            focusedTimes = [];
+            focusedTimes.push(idNum);
+            
+            document.getElementById("Selected-" + idNum).style.background = "rgb(97, 183, 226)";
+            newTimePivot = idNum;
+        }
+
+        this.setState({
+            seconds: focusedTimes,
+            timePivot: newTimePivot
+        });
     }
 
     hourClick(event){
@@ -227,7 +401,7 @@ class Picktime extends React.Component{
     handleShift(splitArr){
 
         var idNum = parseInt(splitArr[1]);
-        var secondsArr = this.state.seconds;
+        var secondsArr = [];
         var pivot = this.state.pivot;
 
         var data = getUsedSeconds(this.state.ampm, this.state.hour, this.state.minute);
@@ -248,28 +422,32 @@ class Picktime extends React.Component{
         }else if(pivot < idNum){
 
             for(count = 0; count < 60; count++){
+                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
                 if(count === pivot){
                     for(count = count; count <= idNum; count++){
                         document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                        secondsArr.push(count);
                     }
                 }
-
-                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
             }
 
         }else{
 
             for(count = 0; count < 60; count++){
+                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
                 if(count === idNum){
                     for(count = count; count <= pivot; count++){
                         document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
+                        secondsArr.push(count);
                     }
                 }
-
-                document.getElementById("Second-" + count).style.background = "rgb(0, 0, 0)";
             }
 
         }
+
+        this.setState({
+            seconds: secondsArr
+        });
 
     }
 
@@ -278,19 +456,30 @@ class Picktime extends React.Component{
         var idNum = parseInt(splitArr[1]);
         var secondsArr = this.state.seconds;
         var newPivot = -1;
+        var oldID = -1;
+        var count = 0;
 
         if(secondsArr.includes(idNum)){
-            document.getElementById("Second-" + idNum).style.background = "rgb(0, 0, 0)";
-            secondsArr.splice(0);
-            
+
+            for(count = 0; count < secondsArr.length; count++){
+                oldID = secondsArr[count];
+                document.getElementById("Second-" + oldID).style.background = "rgb(0, 0, 0)";
+            }
+
+            secondsArr = [];
             newPivot = -1;
         }else{
-            document.getElementById("Second-" + idNum).style.background = "rgb(65, 65, 65)";
-            var oldID = secondsArr.pop();
-            secondsArr.push(idNum);
-            newPivot = idNum;
 
-            document.getElementById("Second-" + oldID).style.background = "rgb(0, 0, 0)";
+            for(count = 0; count < secondsArr.length; count++){
+                oldID = secondsArr[count];
+                document.getElementById("Second-" + oldID).style.background = "rgb(0, 0, 0)";
+            }
+
+            secondsArr = [];
+            secondsArr.push(idNum);
+            
+            document.getElementById("Second-" + idNum).style.background = "rgb(65, 65, 65)";
+            newPivot = idNum;
         }
 
         this.setState({
@@ -298,6 +487,32 @@ class Picktime extends React.Component{
             pivot: newPivot
         });
 
+    }
+
+    toggleAMPM(){
+        var newAMPM = this.state.ampm;
+
+        if(newAMPM.localeCompare("AM") === 0){
+            newAMPM = "PM"
+            document.getElementsByClassName("Picktime-Button-AM")[0].style.background = "#2d5468";
+            document.getElementsByClassName("Picktime-Button-PM")[0].style.background = "#61b7e2";
+        }else{
+            newAMPM = "AM";
+            document.getElementsByClassName("Picktime-Button-AM")[0].style.background = "#61b7e2";
+            document.getElementsByClassName("Picktime-Button-PM")[0].style.background = "#2d5468";
+        }
+
+        this.setState({
+            ampm: newAMPM
+        });
+    }
+
+    goToUpload(event){
+        console.log(this.props);
+        this.props.history.push({
+            pathname: "/Upload",
+            state: {}
+        });
     }
 
     render(){
@@ -313,15 +528,33 @@ class Picktime extends React.Component{
                     </div>
                 </section>
                 <section className="Picktime-Content-Section" style={{height: this.state.middleSectionHeight}}>
-                    <div className="Picktime-Dropdown-Wrapper">
-                        <div className="Picktime-Dropdown-Hour">
-                            <Dropdown itemTitle={"Hour"} items={this.produceHourArray()} customClick={e => this.hourClick(e)}/>
+                    
+                    <div className="Picktime-Select-Area">
+                        <div className="Picktime-AMPM-Wrapper">
+                            <button className="Picktime-Button-AM" onClick={e => this.toggleAMPM(e)}>AM</button>
+                            <button className="Picktime-Button-PM" onClick={e => this.toggleAMPM(e)}>PM</button>
                         </div>
-                        <div className="Picktime-Dropdown-Minute">
-                            <Dropdown itemTitle={"Minute"} items={this.produceMinuteArray()} customClick={e => this.minuteClick(e)}/>
+                        <div className="Picktime-Dropdown-Wrapper">
+                            <div className="Picktime-Dropdown-Hour">
+                                <Dropdown itemTitle={"Hour"} items={this.produceHourArray()} customClick={e => this.hourClick(e)}/>
+                            </div>
+                            <div className="Picktime-Dropdown-Minute">
+                                <Dropdown itemTitle={"Minute"} items={this.produceMinuteArray()} customClick={e => this.minuteClick(e)}/>
+                            </div>
+                            <div className="Picktime-Dropdown-Second">
+                                <Dropdown itemTitle={"Second"} items={this.getSeconds()} customClick={e => this.secondClick(e)} isReady={secondsReady} seconds={this.state.seconds}/>
+                            </div>
                         </div>
-                        <div className="Picktime-Dropdown-Second">
-                            <Dropdown itemTitle={"Second"} items={this.getSeconds()} customClick={e => this.secondClick(e)} isReady={secondsReady}/>
+                        <button className="Picktime-Button-Add" onClick={e => this.addTimes(e)}>Add</button>
+                    </div>
+
+                    <div className="Picktime-Selected-Wrapper">
+                        <div className="Picktime-Selected-List">
+
+                        </div>
+                        <div className="Picktime-Selected-Buttons">
+                            <button className="Picktime-Button-Remove">Remove</button>
+                            <button className="Picktime-Button-Continue" onClick={e => this.goToUpload(e)}>Continue</button>
                         </div>
                     </div>
                 </section>

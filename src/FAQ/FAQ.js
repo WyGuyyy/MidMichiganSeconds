@@ -4,7 +4,6 @@ import './FAQ.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import midmiclipped from '../Assets/midmiclipped.PNG';
-import { PayPalButton } from "react-paypal-button-v2";
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -102,14 +101,6 @@ class FAQ extends React.Component{
                         </div>
                     </div>
                 </section>
-                <PayPalButton
-                    options={{
-                        clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
-                        disableFunding: "card"
-                    }}
-                    amount={0.1}
-                    currency={'USD'}
-                />
             </div>
         );
             

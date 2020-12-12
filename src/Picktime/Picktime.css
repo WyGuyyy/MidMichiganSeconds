@@ -23,20 +23,29 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     background: #386880;
 }
 
-.Picktime-Dropdown-Wrapper{
-    width: 100%;
+.Picktime-Select-Area{
+    width: 50%;
+    height: 700px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     top: 100px;
+}
+
+.Picktime-Dropdown-Wrapper{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .Picktime-Dropdown-Hour{
@@ -49,4 +58,186 @@
 
 .Picktime-Dropdown-Second{
     margin-right: 0px;
+}
+
+.Picktime-Selected-Wrapper{
+    width: 50%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 100px;
+}
+
+.Picktime-Selected-List{
+    width: 400px;
+    height: 500px;
+    background: black;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.Picktime-Selected-List::-webkit-scrollbar {
+    width: 15px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+} 
+  
+.Picktime-Selected-List::-webkit-scrollbar-thumb{
+    background-color: #25405f;
+    border-radius: 10px;
+}
+  
+.Picktime-Selected-List::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.Picktime-Selected-Item{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    background: black;
+    transition-duration: .75s;
+}
+
+.Picktime-Selected-Item:hover{
+    background: #61b7e2;
+}
+
+.Picktime-Selected-Item-Text{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin: 0px;
+    transition-duration: .75s;
+}
+
+.Picktime-Selected-Item:hover .Picktime-Selected-Item-Text{
+    color: black;
+}
+
+
+.Picktime-AMPM-Wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Picktime-Selected-Buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.Picktime-Button-AM{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    background: #61b7e2;
+    box-shadow: 2px 2px 10px black;
+    font-size: 20px;
+    margin-right: 30px;
+}
+
+.Picktime-Button-PM{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    background: #2d5468;
+    box-shadow: 2px 2px 10px black;
+    font-size: 20px;
+}
+
+.Picktime-Button-Add{
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background: #61b7e2;
+    box-shadow: 2px 2px 10px black;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.Picktime-Button-Remove{
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background: #61b7e2;
+    box-shadow: 2px 2px 10px black;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.Picktime-Button-Continue{
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background: #61b7e2;
+    box-shadow: 2px 2px 10px black;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+@media(max-width: 900px){
+    .Picktime-Content-Section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Picktime-Dropdown-Wrapper{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: inline;
+        top: 50px;
+        margin-bottom: 100px;
+    }
+
+    .Picktime-Selected-Wrapper{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: inline;
+        top: 0px;
+    }
+}
+
+@media(max-width: 450px){
+    .Picktime-Selected-List{
+        width: 300px;
+        height: 500px;
+        background: black;
+        border-radius: 20px;
+        overflow-y: scroll;
+    }
+}
+
+@media(max-width: 300px){
+    .Picktime-Selected-List{
+        width: 250px;
+    }
 }

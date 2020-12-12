@@ -20,6 +20,9 @@ class Dropdown extends React.Component{
     }
     
     componentDidMount(){ 
+        
+        this.fillHoursOrMinutes();
+
         if(this.state.itemTitle.localeCompare("Hour") === 0 || this.state.itemTitle.localeCompare("Minute") === 0){
             this.fillHoursOrMinutes();
         }else{
@@ -60,15 +63,19 @@ class Dropdown extends React.Component{
     }
 
     fillSeconds(){
-        var dropdownMenu = document.getElementsByClassName("menuDropdown")[2];
 
         var items = this.state.items;
 
         items.then((value) => {
 
             var dropdownMenu = document.getElementsByClassName("menuDropdown")[2];
+            var secondsArr = this.props.seconds;
 
-            var title = this.state.title;
+            while(dropdownMenu.lastElementChild){
+                dropdownMenu.removeChild(dropdownMenu.lastElementChild);
+            }
+
+            var title = this.state.itemTitle;
             var count = 0;
 
             for(count = 0; count < value.length; count++){
@@ -77,8 +84,12 @@ class Dropdown extends React.Component{
 
                 itemWrapper.classList.add('Dropdown-Item-Wrapper');
 
-                if(value[count].active && this.state.isReady){
+                if(value[count].active && this.props.isReady){
                     item.classList.add('dropdownItem');
+
+                    if(secondsArr.includes(count)){
+                        itemWrapper.style.background = "rgb(65, 65, 65)";
+                    }
                 }else{
                     item.classList.add('dropdownItemDisabled');
                 }
@@ -103,7 +114,12 @@ class Dropdown extends React.Component{
             <div className="dropdownContainer">
                 <div className="Dropdown-Menu-Area">
                     <h2 className="menuTitle">{this.props.itemTitle}</h2>
-                    <div className="menuDropdown" onClick={this.props.customClick}></div>
+                    <div className="menuDropdown" onClick={this.props.customClick}>
+
+                        {this.state.itemTitle.localeCompare("Second") === 0 ? 
+                        this.fillSeconds() : ""}
+
+                    </div>
                 </div>
             </div>
         );

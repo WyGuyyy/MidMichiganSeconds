@@ -62,3 +62,25 @@
     margin: 0;
     color: rgb(83, 83, 83);
 }
+
+@media(max-width: 360px){
+    .menuDropdown{
+        width: 75px;
+    }
+
+    .menuDropdown::-webkit-scrollbar {
+        display: none;
+    } 
+      
+    .menuDropdown::-webkit-scrollbar-thumb{
+        display: none;
+    }
+      
+    .menuDropdown::-webkit-scrollbar-track {
+        display: none;
+    }
+    
+    .menuTitle{
+        font-size: 20px;
+    }
+}
