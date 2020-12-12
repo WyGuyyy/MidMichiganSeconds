@@ -47,10 +47,11 @@
     justify-content: center;
     align-items: center;
     transition-duration: .75s;
+    cursor: pointer;
 }
 
 .Dropdown-Item-Wrapper:hover{
-    background: rgb(65, 65, 65);
+    background: rgb(65, 65, 65) !important;
 }
 
 .dropdownItem{

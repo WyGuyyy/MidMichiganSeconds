@@ -105,10 +105,11 @@
     align-content: center;
     background: black;
     transition-duration: .75s;
+    cursor: pointer;
 }
 
 .Picktime-Selected-Item:hover{
-    background: #61b7e2;
+    background: #61b7e2 !important;
 }
 
 .Picktime-Selected-Item-Text{

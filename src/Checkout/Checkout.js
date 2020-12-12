@@ -73,6 +73,10 @@ class Checkout extends React.Component{
           //Call backend here
       }
 
+      goToUpload(event){
+          this.props.history.goBack();
+      }
+
     render(){
 
         return(
@@ -85,14 +89,27 @@ class Checkout extends React.Component{
                 </section>
                 <section className="Checkout-Content-Section" style={{height: this.state.middleSectionHeight}}>
                     
-                <PayPalButton
-                    options={{
-                        clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
-                        disableFunding: "card"
-                    }}
-                    amount={0.1}
-                    currency={'USD'}
-                />
+                    <div className="Checkout-Receipt-Wrapper">
+                        <div className="Checkout-Receipt-Box">
+
+                        </div>
+                        <div className="Checkout-Receipt-Total-Wrapper">
+                            <h2 className="Checkout-Receipt-Total">TEST: 20$</h2>
+                        </div>
+                    </div>
+
+                    <div className="Checkout-Paypal-Button">
+                        <PayPalButton 
+                            options={{
+                                clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
+                                disableFunding: "card"
+                            }}
+                            amount={0.1}
+                            currency={'USD'}
+                        />
+                    </div>
+
+                    <button className="Checkout-Back-Button" onClick={e => this.goToUpload(e)}>Back</button>
                 </section>
             </div>
         );
