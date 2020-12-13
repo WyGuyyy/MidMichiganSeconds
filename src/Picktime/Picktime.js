@@ -34,6 +34,8 @@ class Picktime extends React.Component{
 
         document.addEventListener("keydown", this.onKeyDown, false);
         document.addEventListener("keyup", this.onKeyUp, false);
+
+        this.fillTimes();
     }
 
     //Lifecycle event preparing Slideshow component to unmount from DOM
@@ -105,6 +107,42 @@ class Picktime extends React.Component{
         return data;
     }
 
+    fillTimes(){
+
+        var selectedList = document.getElementsByClassName("Picktime-Selected-List")[0];
+        var times = this.state.times;
+
+        var listItem = "";
+        var listItemText = "";
+
+        var count = 0;
+
+        while(selectedList.lastElementChild){
+            selectedList.removeChild(selectedList.lastElementChild);
+        }
+
+        for(count = 0; count < times.length; count++){
+            
+            listItem = document.createElement("div");
+            listItemText = document.createElement("h2");
+
+            listItem.onclick = e => this.focusTimes(e);
+
+            listItem.id = "Selected-" + count;
+            listItemText.id = "Text-Selected-" + count;
+
+            listItem.classList.add("Picktime-Selected-Item");
+            listItemText.classList.add("Picktime-Selected-Item-Text");
+
+            listItemText.textContent = times[count];
+
+            listItem.appendChild(listItemText);
+            selectedList.appendChild(listItem);
+
+        }
+
+    }
+
     addTimes(event){
 
         var ampm = this.state.ampm;
@@ -113,7 +151,7 @@ class Picktime extends React.Component{
         var seconds = this.state.seconds;
 
         var time = "";
-        var timesArr = [];
+        var timesArr = this.state.times;
         var currSecond = 0;
         var count = 0;
 
@@ -127,22 +165,6 @@ class Picktime extends React.Component{
 
             timesArr.push(time);
 
-            listItem = document.createElement("div");
-            listItemText = document.createElement("h2");
-
-            listItem.onclick = e => this.focusTimes(e);
-
-            listItem.id = "Selected-" + count;
-            listItemText.id = "Text-Selected-" + count;
-
-            listItem.classList.add("Picktime-Selected-Item");
-            listItemText.classList.add("Picktime-Selected-Item-Text");
-
-            listItemText.textContent = time;
-
-            listItem.appendChild(listItemText);
-            selectedList.appendChild(listItem);
-
             document.getElementById("Second-" + seconds[count]).style.background = "rgb(0, 0, 0)";
         }
 
@@ -155,6 +177,8 @@ class Picktime extends React.Component{
             seconds: [],
             times: timesArr
         });
+
+        this.fillTimes();
 
     }
 
@@ -187,14 +211,13 @@ class Picktime extends React.Component{
 
         var count = 0;
 
-        console.log(timePivot);
-
         if(timePivot === -1){
 
-            for(count = 0; count < idNum; count++){
+            for(count = 0; count <= idNum; count++){
                 document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
                 document.getElementById("Text-Selected-" + count).style.color = "rgb(0, 0, 0)";
-                newFocusedTimes.push(count);
+                var aTime = document.getElementById("Text-Selected-" + count).textContent;
+                newFocusedTimes.push(aTime);
             }
 
             for(count = count; count < times.length; count++){
@@ -203,18 +226,17 @@ class Picktime extends React.Component{
             }
 
         }else if(timePivot < idNum){
-            console.log(timePivot + "|||" + idNum);
             for(count = 0; count < times.length; count++){
                 document.getElementById("Selected-" + count).style.background = "rgb(0, 0, 0)";
                 document.getElementById("Text-Selected-" + count).style.color = "rgb(255, 255, 255)";
                 if(count === timePivot){
                     for(count = count; count <= idNum; count++){
                         document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
-                        document.getElementById("Text-Selected-" + idNum).style.color = "rgb(0, 0, 0)";
-                        newFocusedTimes.push(count);
+                        document.getElementById("Text-Selected-" + count).style.color = "rgb(0, 0, 0)";
+                        var aTime = document.getElementById("Text-Selected-" + count).textContent;
+                        newFocusedTimes.push(aTime);
                     }
                 }
-                console.log(count);
             }
 
         }else{
@@ -226,7 +248,8 @@ class Picktime extends React.Component{
                     for(count = count; count <= timePivot; count++){
                         document.getElementById("Selected-" + count).style.background = "rgb(97, 183, 226)";
                         document.getElementById("Text-Selected-" + count).style.color = "rgb(0, 0, 0)";
-                        newFocusedTimes.push(count);
+                        var aTime = document.getElementById("Text-Selected-" + count).textContent;
+                        newFocusedTimes.push(aTime);
                     }
                 }
             }
@@ -243,19 +266,22 @@ class Picktime extends React.Component{
 
         var idNum = parseInt(splitArr[1]);
         var newFocusedTimes = this.state.focusedTimes;
+        var times = this.state.times;
         var newTimePivot = -1;
 
-        if(newFocusedTimes.includes(idNum)){
+        var aTime = document.getElementById("Text-Selected-" + idNum).textContent;
+
+        if(newFocusedTimes.includes(aTime)){
             document.getElementById("Selected-" + idNum).style.background = "rgb(0, 0, 0)";
             document.getElementById("Text-Selected-" + idNum).style.color = "rgb(255, 255, 255)";
-            var index = newFocusedTimes.indexOf(idNum);
+            var index = newFocusedTimes.indexOf(aTime);
             newFocusedTimes.splice(index, 1);
 
-            newTimePivot = (newFocusedTimes.length > 0 ? newFocusedTimes[newFocusedTimes.length - 1] : -1);
+            newTimePivot = (newFocusedTimes.length > 0 ? times.indexOf(newFocusedTimes[newFocusedTimes.length - 1]) : -1);
         }else{
             document.getElementById("Selected-" + idNum).style.background = "rgb(97, 183, 226)";
             document.getElementById("Text-Selected-" + idNum).style.color = "rgb(0, 0, 0)";
-            newFocusedTimes.push(idNum);
+            newFocusedTimes.push(aTime);
             newTimePivot = idNum;
         }
 
@@ -269,14 +295,17 @@ class Picktime extends React.Component{
     handleTimeSingle(splitArr){
         var idNum = parseInt(splitArr[1]);
         var newFocusedTimes = this.state.focusedTimes;
+        var times = this.state.times;
         var newTimePivot = -1;
         var oldID = -1;
         var count = 0;
 
-        if(newFocusedTimes.includes(idNum)){
+        var aTime = document.getElementById("Text-Selected-" + idNum).textContent;
+
+        if(newFocusedTimes.includes(aTime)){
 
             for(count = 0; count < newFocusedTimes.length; count++){
-                oldID = newFocusedTimes[count];
+                oldID = times.indexOf(newFocusedTimes[count]);
                 document.getElementById("Selected-" + oldID).style.background = "rgb(0, 0, 0)";
                 document.getElementById("Text-Selected-" + oldID).style.color = "rgb(255, 255, 255)";
             }
@@ -284,16 +313,16 @@ class Picktime extends React.Component{
             newFocusedTimes = [];
             newTimePivot = -1;
         }else{
-
+            
             for(count = 0; count < newFocusedTimes.length; count++){
-                oldID = newFocusedTimes[count];
+                oldID = times.indexOf(newFocusedTimes[count]);
                 document.getElementById("Selected-" + oldID).style.background = "rgb(0, 0, 0)";
                 document.getElementById("Text-Selected-" + oldID).style.color = "rgb(255, 255, 255)";
             }
 
             newFocusedTimes = [];
-            newFocusedTimes.push(idNum);
-            
+            newFocusedTimes.push(aTime);
+
             document.getElementById("Selected-" + idNum).style.background = "rgb(97, 183, 226)";
             document.getElementById("Text-Selected-" + idNum).style.color = "rgb(0, 0, 0)";
             newTimePivot = idNum;
@@ -303,6 +332,27 @@ class Picktime extends React.Component{
             focusedTimes: newFocusedTimes,
             timePivot: newTimePivot
         });
+    }
+
+    removeTime(event){
+        var count = 0;
+        var focusedTimesArr = this.state.focusedTimes;
+        var timesArr = this.state.times;
+
+        for(count = 0; count < focusedTimesArr.length; count++){
+            console.log(focusedTimesArr);
+            var index = timesArr.indexOf(focusedTimesArr[count]);
+            timesArr.splice(index, 1);
+        }
+
+        focusedTimesArr = [];
+        
+        this.setState({
+            times: timesArr,
+            focusedTimes: focusedTimesArr
+        });
+
+        this.fillTimes();
     }
 
     hourClick(event){
@@ -425,7 +475,7 @@ class Picktime extends React.Component{
 
         if(pivot === -1){
 
-            for(count = 0; count < idNum; count++){
+            for(count = 0; count <= idNum; count++){
                 document.getElementById("Second-" + count).style.background = "rgb(65, 65, 65)";
                 secondsArr.push(count);
             }
@@ -504,17 +554,18 @@ class Picktime extends React.Component{
 
     }
 
-    toggleAMPM(){
+    toggleAMPM(event){
         var newAMPM = this.state.ampm;
+        var id = event.target.className.split("-")[2];
 
-        if(newAMPM.localeCompare("AM") === 0){
-            newAMPM = "PM"
-            document.getElementsByClassName("Picktime-Button-AM")[0].style.background = "#2d5468";
-            document.getElementsByClassName("Picktime-Button-PM")[0].style.background = "#61b7e2";
-        }else{
-            newAMPM = "AM";
+        if(id.localeCompare("AM") === 0){
+            newAMPM = "AM"
             document.getElementsByClassName("Picktime-Button-AM")[0].style.background = "#61b7e2";
             document.getElementsByClassName("Picktime-Button-PM")[0].style.background = "#2d5468";
+        }else{
+            newAMPM = "PM";
+            document.getElementsByClassName("Picktime-Button-AM")[0].style.background = "#2d5468";
+            document.getElementsByClassName("Picktime-Button-PM")[0].style.background = "#61b7e2";
         }
 
         this.setState({
@@ -568,7 +619,7 @@ class Picktime extends React.Component{
 
                         </div>
                         <div className="Picktime-Selected-Buttons">
-                            <button className="Picktime-Button-Remove">Remove</button>
+                            <button className="Picktime-Button-Remove" onClick={e => this.removeTime(e)}>Remove</button>
                             <button className="Picktime-Button-Continue" onClick={e => this.goToUpload(e)}>Continue</button>
                         </div>
                     </div>
