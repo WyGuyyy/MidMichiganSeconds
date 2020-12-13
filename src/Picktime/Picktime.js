@@ -249,7 +249,7 @@ class Picktime extends React.Component{
             document.getElementById("Selected-" + idNum).style.background = "rgb(0, 0, 0)";
             document.getElementById("Text-Selected-" + idNum).style.color = "rgb(255, 255, 255)";
             var index = newFocusedTimes.indexOf(idNum);
-            newFocusedTimes.splice(index);
+            newFocusedTimes.splice(index, 1);
 
             newTimePivot = (newFocusedTimes.length > 0 ? newFocusedTimes[newFocusedTimes.length - 1] : -1);
         }else{
@@ -397,7 +397,7 @@ class Picktime extends React.Component{
         if(secondsArr.includes(idNum)){
             document.getElementById("Second-" + idNum).style.background = "rgb(0, 0, 0)";
             var index = secondsArr.indexOf(idNum);
-            secondsArr.splice(index);
+            secondsArr.splice(index, 1);
             
             newPivot = (secondsArr.length > 0 ? secondsArr[secondsArr.length - 1] : -1);
         }else{

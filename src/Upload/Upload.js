@@ -12,7 +12,11 @@ class Upload extends React.Component{
         super(props);
 
         this.state = {
-            times: props.history.location.state.times
+            times: props.history.location.state.times,
+            selectedTimes: [],
+            shift: false,
+            ctrl: false,
+            pivot: -1
         };
 
         console.log(props.history.location.state.times);
@@ -36,13 +40,17 @@ class Upload extends React.Component{
 
     onKeyDown(e){
         if(e.key.localeCompare("Shift") == 0){
-            this.setState({
-                shift: true
-            });
+            if(!this.state.shift){
+                this.setState({
+                    shift: true
+                });
+            }
         }else if(e.key.localeCompare("Control") == 0){
-            this.setState({
-                ctrl: true
-            });
+            if(!this.state.ctrl){
+                this.setState({
+                    ctrl: true
+                });
+            }
         }
     }
 
@@ -95,6 +103,7 @@ class Upload extends React.Component{
             timeWrapper.id = "time-item-" + count;
 
             timeText.textContent = times[count];
+            timeText.id = "text-time-item-" + count;
             timeWrapper.appendChild(timeText);
 
             aPhotoInput.id = "photo-input-" + count;
@@ -144,8 +153,8 @@ class Upload extends React.Component{
         if(aFlag.localeCompare("p") === 0 && event.target.value.localeCompare("") === 0){
             event.target.value = "Select a photo...";
         }else if(aFlag.localeCompare("u") == 0 && event.target.value.localeCompare("") == 0){
-            for(count = 0; count < this.state.buffer.length; count++){
-                var index = this.state.times.indexOf(this.state.buffer[count]);
+            for(count = 0; count < this.state.selectedTimes.length; count++){
+                var index = this.state.times.indexOf(this.state.selectedTimes[count]);
                 document.getElementById("url-" + index).value = "Enter a URL...";
             }
         }
@@ -156,14 +165,176 @@ class Upload extends React.Component{
         var urlInput = e.target;
         var count;
 
-        for(count = 0; count < this.state.buffer.length; count++){
-            var index = this.state.times.indexOf(this.state.buffer[count]);
+        for(count = 0; count < this.state.selectedTimes.length; count++){
+            var index = this.state.times.indexOf(this.state.selectedTimes[count]);
             document.getElementById("url-" + index).value = urlInput.value;
         }
 
     }
 
     timeClick(event){
+
+        var id = event.target.id.replace("text-", "");
+        var splitArr = id.split("-");
+
+        if(this.state.shift){
+            this.handleTimeShift(splitArr);
+        }else if(this.state.ctrl){
+            this.handleTimeCtrl(splitArr);
+        }else{
+            this.handleTimeSingle(splitArr);
+        }
+
+    }
+
+    handleTimeShift(splitArr){
+        var selTimes = [];
+        var times = this.state.times;
+        var idNum = parseInt(splitArr[2]);
+        var aPivot = this.state.pivot;
+        var count = 0;
+
+        if(aPivot === -1){
+
+            for(count = 0; count <= idNum; count++){
+                var text = document.getElementById("text-time-item-" + count);
+                text.style.color = "rgb(97, 183, 226)";
+                selTimes.push(text.textContent);
+
+                document.getElementById("photo-input-" + count).disabled = false;
+                document.getElementById("url-" + count).disabled = false;
+            }
+
+            for(count = count; count < times.length; count++){
+                document.getElementById("text-time-item-" + count).style.color = "rgb(255, 255, 255)";
+                document.getElementById("photo-input-" + count).disabled = true;
+                document.getElementById("url-" + count).disabled = true;
+            }
+
+        }else if(idNum < aPivot){
+
+            for(count = 0; count < times.length; count++){
+                document.getElementById("text-time-item-" + count).style.color = "rgb(255, 255, 255)";
+                document.getElementById("photo-input-" + count).disabled = true;
+                document.getElementById("url-" + count).disabled = true;
+                if(count === idNum){
+                    for(count = count; count <= aPivot; count++){
+                        var text = document.getElementById("text-time-item-" + count);
+                        text.style.color = "rgb(97, 183, 226)";
+                        selTimes.push(text.textContent);
+
+                        document.getElementById("photo-input-" + count).disabled = false;
+                        document.getElementById("url-" + count).disabled = false;
+                    }
+                    count--;
+                }
+            }
+
+        }else{
+
+            for(count = 0; count < times.length; count++){
+                document.getElementById("text-time-item-" + count).style.color = "rgb(255, 255, 255)";
+                document.getElementById("photo-input-" + count).disabled = true;
+                document.getElementById("url-" + count).disabled = true;
+                if(count === aPivot){
+                    for(count = count; count <= idNum; count++){
+                        var text = document.getElementById("text-time-item-" + count);
+                        text.style.color = "rgb(97, 183, 226)";
+                        selTimes.push(text.textContent);
+
+                        document.getElementById("photo-input-" + count).disabled = false;
+                        document.getElementById("url-" + count).disabled = false;
+                    }
+                    count--;
+                }
+            }
+
+        }
+
+        this.setState({
+            selectedTimes: selTimes
+        });
+    }
+
+    handleTimeCtrl(splitArr){
+        var selTimes = this.state.selectedTimes;
+        var times = this.state.times;
+        var idNum = parseInt(splitArr[2]);
+        var aPivot = this.state.pivot;
+
+        var aTime = document.getElementById("text-time-item-" + idNum).textContent;
+
+        if(selTimes.includes(aTime)){
+            var index = selTimes.indexOf(aTime);
+            selTimes.splice(index, 1);
+
+            aPivot = times.indexOf(selTimes[selTimes.length - 1]);
+            document.getElementById("text-time-item-" + idNum).style.color = "rgb(255, 255, 255)";
+
+            document.getElementById("photo-input-" + idNum).disabled = true;
+            document.getElementById("url-" + idNum).disabled = true;
+        }else{
+            var text = document.getElementById("text-time-item-" + idNum);
+            text.style.color = "rgb(97, 183, 226)";
+            selTimes.push(text.textContent);
+            aPivot = idNum;
+
+            document.getElementById("photo-input-" + idNum).disabled = false;
+            document.getElementById("url-" + idNum).disabled = false;
+        }
+
+        this.setState({
+            selectedTimes: selTimes,
+            pivot: aPivot
+        });
+
+    }
+
+    handleTimeSingle(splitArr){
+        var selTimes = this.state.selectedTimes;
+        var times = this.state.times;
+        var idNum = parseInt(splitArr[2]);
+        var aPivot = this.state.pivot;
+        var count = 0;
+
+        var aTime = document.getElementById("text-time-item-" + idNum).textContent;
+
+        if(selTimes.includes(aTime)){
+
+            for(count = 0; count < selTimes.length; count++){
+                var index = times.indexOf(selTimes[count]);
+                document.getElementById("text-time-item-" + index).style.color = "rgb(255, 255, 255)";
+
+                document.getElementById("photo-input-" + count).disabled = true;
+                document.getElementById("url-" + count).disabled = true;
+            }
+
+            selTimes = [];
+            aPivot = -1;
+
+        }else{
+            for(count = 0; count < selTimes.length; count++){
+                var index = times.indexOf(selTimes[count]);
+                document.getElementById("text-time-item-" + index).style.color = "rgb(255, 255, 255)";
+
+                document.getElementById("photo-input-" + count).disabled = true;
+                document.getElementById("url-" + count).disabled = true;
+            }
+
+            selTimes = [];
+            selTimes.push(aTime);
+            aPivot = idNum;
+
+            document.getElementById("text-time-item-" + idNum).style.color = "rgb(97, 183, 226)";
+
+            document.getElementById("photo-input-" + idNum).disabled = false;
+            document.getElementById("url-" + idNum).disabled = false;
+        }
+
+        this.setState({
+            selectedTimes: selTimes,
+            pivot: aPivot
+        });
 
     }
 
