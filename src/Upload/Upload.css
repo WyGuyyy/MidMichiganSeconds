@@ -71,23 +71,33 @@
 
 .Upload-Checkout-Button{
     height: 50px;
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: none;
     background: #61b7e2;
     box-shadow: 2px 2px 10px black;
-    font-size: 20px;
+    font-size: 30px;
+    transition-duration: .75s;
+}
+
+.Upload-Checkout-Button:hover{
+    background: #00aaff;
 }
 
 .Upload-Back-Button{
     height: 50px;
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: none;
     background: #61b7e2;
     box-shadow: 2px 2px 10px black;
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 40px;
+    transition-duration: .75s;
+}
+
+.Upload-Back-Button:hover{
+    background: #00aaff;
 }
 
 .Upload-Selected-Item{
@@ -97,6 +107,11 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    transition-duration: .75s;
+}
+
+.Upload-Selected-Item:hover{
+    background: rgb(65, 65, 65) !important;
 }
 
 .Upload-Item-Time-Wrapper{
@@ -113,6 +128,7 @@
     font-size: 30px;
     color: white;
     margin-left: 20px;
+    transition-duration: .75s;
 }
 
 .Upload-Item-Image-Wrapper{
@@ -147,9 +163,10 @@
 
 .Upload-Item-URL-Input{
     background-color: black;
-    border-color: white;
+    border: none;
     height: 30px;
     border-width: 0 0 1px;
+    border-radius: 10px;
     color: white;
     font-size: 20px;
     padding: 5px;
@@ -168,4 +185,56 @@
 
 .Upload-Item-URL-Input:hover{
     border-color: green;
+}
+
+/* Start here next time - need to figure out resizing for upload page */
+
+@media(max-width: 940px){
+
+    .Upload-Item-Time-Text{
+        font-size: 15px;
+    }
+
+    .Upload-Item-Image-Label{
+        margin-left: 15px;
+        margin-left: 0px;
+    }
+
+    .Upload-Item-URL-Input{
+        font-size: 15px;
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 700px){
+
+    .Upload-Item-Time-Wrapper{
+        width: 33.33%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .Upload-Item-Image-Wrapper{
+        width: 33.33%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .Upload-Item-URL-Wrapper{
+        width: 33.33%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
 }

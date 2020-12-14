@@ -13,7 +13,9 @@ class Checkout extends React.Component{
         super(props);
 
         this.state = {
-            times: []
+            times: props.history.location.state.times,
+            url: props.history.location.state.url,
+            files: props.history.location.state.selectedFiles
         };
 
     }
@@ -24,11 +26,13 @@ class Checkout extends React.Component{
 
         document.addEventListener("keydown", this.onKeyDown, false);
         document.addEventListener("keyup", this.onKeyUp, false);
+
+        this.fillItems();
     }
 
     //Lifecycle event preparing Slideshow component to unmount from DOM
     componentWillUnmount(){
-
+        
     }
 
     onKeyDown(e){
@@ -66,6 +70,75 @@ class Checkout extends React.Component{
           ],
         });
       }
+
+      fillItems(){
+
+        var times = this.state.times;
+        var total = times.length;
+        var count = 0;
+
+        var receipt = document.getElementsByClassName("Checkout-Receipt-Box")[0];
+        var totalLabel = document.getElementsByClassName("Checkout-Receipt-Total")[0];
+
+        for(count = 0; count < times.length; count++){
+            var parentDiv = document.createElement("div");
+
+            var timeDiv = document.createElement("div");
+            var amountDiv = document.createElement("div");
+
+            var timeTitle = document.createElement("h2");
+            var amountTitle = document.createElement("h2");
+
+            parentDiv.classList.add("Checkout-Receipt-Item");
+
+            timeDiv.classList.add("Checkout-Receipt-Time-Wrapper");
+            amountDiv.classList.add("Checkout-Receipt-Amount-Wrapper");
+
+            timeTitle.classList.add("Checkout-Receipt-Time");
+            amountTitle.classList.add("Checkout-Receipt-Amount");
+
+            timeTitle.textContent = times[count];
+            amountTitle.textContent = "$1.00"
+
+            timeDiv.appendChild(timeTitle);
+            amountDiv.appendChild(amountTitle);
+
+            parentDiv.appendChild(timeDiv);
+            parentDiv.appendChild(amountDiv);
+
+            receipt.appendChild(parentDiv);
+        }
+
+        var parentDiv = document.createElement("div");
+
+        var timeDiv = document.createElement("div");
+        var amountDiv = document.createElement("div");
+
+        var timeTitle = document.createElement("h2");
+        var amountTitle = document.createElement("h2");
+
+        parentDiv.classList.add("Checkout-Receipt-Item");
+
+        timeDiv.classList.add("Checkout-Receipt-Time-Wrapper");
+        amountDiv.classList.add("Checkout-Receipt-Amount-Wrapper");
+
+        timeTitle.classList.add("Checkout-Receipt-Time");
+        amountTitle.classList.add("Checkout-Receipt-Amount");
+
+        timeTitle.textContent = "Transaction Fee";
+        amountTitle.textContent = "$0.10"
+
+        timeDiv.appendChild(timeTitle);
+        amountDiv.appendChild(amountTitle);
+
+        parentDiv.appendChild(timeDiv);
+        parentDiv.appendChild(amountDiv);
+
+        receipt.appendChild(parentDiv);
+
+        totalLabel.textContent = "TOTAL: $" + (total + .1).toFixed(2);
+
+      }
     
       onApprove(data, actions) {
           
@@ -94,7 +167,7 @@ class Checkout extends React.Component{
 
                         </div>
                         <div className="Checkout-Receipt-Total-Wrapper">
-                            <h2 className="Checkout-Receipt-Total">TEST: 20$</h2>
+                            <h2 className="Checkout-Receipt-Total"></h2>
                         </div>
                     </div>
 

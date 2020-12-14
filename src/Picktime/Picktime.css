@@ -164,36 +164,51 @@
 
 .Picktime-Button-Add{
     height: 50px;
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: none;
     background: #61b7e2;
     box-shadow: 2px 2px 10px black;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 20px;
+    transition-duration: .75s;
+}
+
+.Picktime-Button-Add:hover{
+    background: #00aaff;
 }
 
 .Picktime-Button-Remove{
     height: 50px;
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: none;
     background: #61b7e2;
     box-shadow: 2px 2px 10px black;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 20px;
     margin-right: 20px;
+    transition-duration: .75s;
+}
+
+.Picktime-Button-Remove:hover{
+    background: #00aaff;
 }
 
 .Picktime-Button-Continue{
     height: 50px;
-    width: 100px;
+    width: 150px;
     border-radius: 10px;
     border: none;
     background: #61b7e2;
     box-shadow: 2px 2px 10px black;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 20px;
+    transition-duration: .75s;
+}
+
+.Picktime-Button-Continue:hover{
+    background: #00aaff;
 }
 
 @media(max-width: 900px){
