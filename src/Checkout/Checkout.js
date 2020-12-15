@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import './Checkout.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
+import Timeline from '../Timeline/Timeline';
 import { PayPalButton } from "react-paypal-button-v2";
 import {getUsedSeconds} from '../Services/ContentService';
 import { Fragment } from 'react';
@@ -15,7 +16,8 @@ class Checkout extends React.Component{
         this.state = {
             times: props.history.location.state.times,
             url: props.history.location.state.url,
-            files: props.history.location.state.selectedFiles
+            files: props.history.location.state.selectedFiles,
+
         };
 
     }
@@ -58,18 +60,6 @@ class Checkout extends React.Component{
             });
         }
     }
-
-    createOrder(data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: "0.01",
-              },
-            },
-          ],
-        });
-      }
 
       fillItems(){
 
@@ -126,7 +116,7 @@ class Checkout extends React.Component{
         amountTitle.classList.add("Checkout-Receipt-Amount");
 
         timeTitle.textContent = "Transaction Fee";
-        amountTitle.textContent = "$0.10"
+        amountTitle.textContent = "$" + (times.length * .1).toFixed(2);
 
         timeDiv.appendChild(timeTitle);
         amountDiv.appendChild(amountTitle);
@@ -136,14 +126,25 @@ class Checkout extends React.Component{
 
         receipt.appendChild(parentDiv);
 
-        totalLabel.textContent = "TOTAL: $" + (total + .1).toFixed(2);
+        totalLabel.textContent = "TOTAL: $" + (total + (total * .1)).toFixed(2);
 
       }
-    
-      onApprove(data, actions) {
-          
-        fetch()
-          //Call backend here
+
+      onApprove = async (data, actions) => {
+        
+        var success = await fetch("http://localhost:8080/api/order/capture", {  
+            method: "POST",                          
+            headers: {"Content-Type": "application/json"},
+            body: {token: data.facilitatorAccessToken, orderID: data.orderID, payerID: data.payerID}
+            }).catch(console.log);
+
+        /*f(success === 1){
+            await fetch("http://192.168.1.10:8080/api/file/" + contentID , { 
+                method: "POST",                          
+                body: fileData
+                }).catch(console.log);
+            }
+        }*/
       }
 
       goToUpload(event){
@@ -151,6 +152,8 @@ class Checkout extends React.Component{
       }
 
     render(){
+
+        var totalCost = this.state.times.length + (this.state.times.length * .1);
 
         return(
             <div className="checkoutContainer">
@@ -160,6 +163,9 @@ class Checkout extends React.Component{
                         <Header />
                     </div>
                 </section>
+                <div className="Picktime-Timeline-Wrapper">
+                    <Timeline flag="3"/>
+                </div>
                 <section className="Checkout-Content-Section" style={{height: this.state.middleSectionHeight}}>
                     
                     <div className="Checkout-Receipt-Wrapper">
@@ -173,12 +179,9 @@ class Checkout extends React.Component{
 
                     <div className="Checkout-Paypal-Button">
                         <PayPalButton 
-                            options={{
-                                clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
-                                disableFunding: "card"
-                            }}
-                            amount={0.1}
+                            amount={totalCost}
                             currency={'USD'}
+                            onApprove={this.onApprove}
                         />
                     </div>
 

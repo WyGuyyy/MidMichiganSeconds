@@ -26,23 +26,6 @@ class FAQ extends React.Component{
 
     }
 
-    createOrder(data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: "0.01",
-              },
-            },
-          ],
-        });
-      }
-    
-      onApprove(data, actions) {
-          
-        fetch()
-          //Call backend here
-      }
     
     render(){
 

@@ -4,6 +4,7 @@ import './Picktime.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import Dropdown from './Dropdown';
+import Timeline from '../Timeline/Timeline';
 import {getUsedSeconds} from '../Services/ContentService';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
@@ -593,6 +594,11 @@ class Picktime extends React.Component{
                         <Header />
                     </div>
                 </section>
+
+                <div className="Picktime-Timeline-Wrapper">
+                    <Timeline flag="1"/>
+                </div>
+
                 <section className="Picktime-Content-Section" style={{height: this.state.middleSectionHeight}}>
                     
                     <div className="Picktime-Select-Area">

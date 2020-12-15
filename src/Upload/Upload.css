@@ -188,6 +188,16 @@
     border-color: green;
 }
 
+.Upload-Timeline-Wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50px;
+}
+
 /* Start here next time - need to figure out resizing for upload page */
 
 @media(max-width: 940px){

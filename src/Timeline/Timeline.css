@@ -1,0 +1,444 @@
+/* CSS Variables */
+:root{
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+#timeline-root{
+    grid-area: timeline;
+    display: grid;
+    grid-template-areas:
+    'one line-one two line-two three'
+    'label1 blank1 label2 blank2 label3';
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+#one{
+    grid-area: one;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+}
+
+#one h1{
+    color: black;
+    font-size: 50px;
+    justify-self: center;
+    align-self: center;
+}
+
+#line1{
+    grid-area: line-one;
+    height: 5px;
+    width: 200px;
+    background-color: black;
+    align-self: center;
+    justify-self: center;
+}
+
+#two{
+    grid-area: two;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+}
+
+#two h1{
+    color: black;
+    font-size: 50px;
+    justify-self: center;
+    align-self: center;
+}
+
+#line2{
+    grid-area: line-two;
+    height: 5px;
+    width: 200px;
+    background-color: black;
+    align-self: center;
+    justify-self: center;
+}
+
+#three{
+    grid-area: three;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+}
+
+#three h1{
+    color: black;
+    font-size: 50px;
+    justify-self: center;
+    align-self: center;
+}
+
+#label1{
+    grid-area: label1;
+    color: white;
+}
+
+#label2{
+    grid-area: label2;
+    color: white;
+}
+
+#label3{
+    grid-area: label3;
+    color: white;
+}
+
+@media(max-width: 1000px){
+
+    #one{
+        grid-area: one;
+        display: flex;
+        width: 80px;
+        height: 80px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #one h1{
+        color: black;
+        font-size: 40px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line1{
+        grid-area: line-one;
+        height: 5px;
+        width: 170px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #two{
+        grid-area: two;
+        display: flex;
+        width: 80px;
+        height: 80px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #two h1{
+        color: black;
+        font-size: 40px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line2{
+        grid-area: line-two;
+        height: 5px;
+        width: 170px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #three{
+        grid-area: three;
+        display: flex;
+        width: 80px;
+        height: 80px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #three h1{
+        color: black;
+        font-size: 40px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #label1{
+        font-size: 1.3rem;
+    }
+    
+    #label2{
+        font-size: 1.3rem;
+    }
+    
+    #label3{
+        font-size: 1.3rem;
+    }
+
+}
+
+
+@media(max-width: 750px){
+
+    #one{
+        grid-area: one;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #one h1{
+        color: black;
+        font-size: 30px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line1{
+        grid-area: line-one;
+        height: 5px;
+        width: 140px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #two{
+        grid-area: two;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #two h1{
+        color: black;
+        font-size: 30px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line2{
+        grid-area: line-two;
+        height: 5px;
+        width: 140px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #three{
+        grid-area: three;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+    }
+    
+    #three h1{
+        color: black;
+        font-size: 30px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #label1{
+        font-size: 1rem;
+    }
+    
+    #label2{
+        font-size: 1rem;
+    }
+    
+    #label3{
+        font-size: 1rem;
+    }
+
+}
+
+
+@media(max-width: 575px){
+
+    #one{
+        grid-area: one;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #one h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line1{
+        grid-area: line-one;
+        height: 5px;
+        width: 110px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #two{
+        grid-area: two;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #two h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line2{
+        grid-area: line-two;
+        height: 5px;
+        width: 110px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #three{
+        grid-area: three;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #three h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #label1{
+        font-size: .7rem;
+    }
+    
+    #label2{
+        font-size: .7rem;
+    }
+    
+    #label3{
+        font-size: .7rem;
+    }
+
+}
+
+@media(max-width: 450px){
+
+    #one{
+        grid-area: one;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #one h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line1{
+        grid-area: line-one;
+        height: 5px;
+        width: 80px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #two{
+        grid-area: two;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #two h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #line2{
+        grid-area: line-two;
+        height: 5px;
+        width: 80px;
+        background-color: black;
+        align-self: center;
+        justify-self: center;
+    }
+    
+    #three{
+        grid-area: three;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 10px;
+    }
+    
+    #three h1{
+        color: black;
+        font-size: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #label1{
+        font-size: .7rem;
+    }
+    
+    #label2{
+        font-size: .7rem;
+    }
+    
+    #label3{
+        font-size: .7rem;
+    }
+
+}

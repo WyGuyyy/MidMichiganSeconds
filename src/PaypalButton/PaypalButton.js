@@ -9,7 +9,7 @@ class PaypalButton extends React.Component {
   render() {
 
     //const { amount, onSuccess, onCancel, paypalClick, currency } = this.props;
-    const { amount, onSuccess, currency } = this.props;
+    const { amount, currency, onApprove } = this.props;
 
     const  card = "card";
     const credit = "credit";
@@ -19,10 +19,10 @@ class PaypalButton extends React.Component {
             <PayPalButton
                 amount={amount}
                 currency={currency}
-                onSuccess={(details, data) => onSuccess(details, data)}
+                onApprove={(data, actions) => onApprove(data, actions)}
                 options={{
-                    clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
-                    disableFunding: "card"
+                  clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
+                  disableFunding: "card"
                 }}
             />
         </div>

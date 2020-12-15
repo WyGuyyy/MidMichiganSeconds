@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import './Upload.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
+import Timeline from '../Timeline/Timeline';
 import {getUsedSeconds} from '../Services/ContentService';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
@@ -552,6 +553,9 @@ class Upload extends React.Component{
                         <Header />
                     </div>
                 </section>
+                <div className="Upload-Timeline-Wrapper">
+                    <Timeline flag="2"/>
+                </div>
                 <section className="Upload-Content-Section" style={{height: this.state.middleSectionHeight}}>
                     
                     <div className="Upload-Selected-Wrapper">
