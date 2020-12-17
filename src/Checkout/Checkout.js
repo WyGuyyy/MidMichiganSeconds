@@ -130,22 +130,32 @@ class Checkout extends React.Component{
 
       }
 
-      onApprove = async (data, actions) => {
-        
-        var success = await fetch("http://localhost:8080/api/order/capture", {  
-            method: "POST",                          
-            headers: {"Content-Type": "application/json"},
-            body: {token: data.facilitatorAccessToken, orderID: data.orderID, payerID: data.payerID}
+      onApprove = async (data, actions) => { //Start here next time and get front/back end hooked up
+
+        const orderData = new FormData();
+
+        var files = this.state.files;
+        var order = [data.facilitatorAccessToken, data.orderID, data.payerID];
+
+        orderData.append("files", files);
+        orderData.append("order[]", order);
+        orderData.append("url[]", this.state.url);
+        orderData.append("times[]", this.state.times);
+
+        var status = await fetch("http://localhost:8080/api/order/capture", {  
+            method: "POST",                 
+            body: orderData
             }).catch(console.log);
 
-        /*f(success === 1){
+        /*if(status === 1){
             await fetch("http://192.168.1.10:8080/api/file/" + contentID , { 
                 method: "POST",                          
                 body: fileData
                 }).catch(console.log);
-            }
-        }*/
-      }
+            }else{
+
+            }*/
+        }
 
       goToUpload(event){
           this.props.history.goBack();

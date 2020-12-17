@@ -514,6 +514,7 @@ class Upload extends React.Component{
         });
 
         if(urlExist == 1){
+            console.log(this.state.selectedFiles);
             this.props.history.push({
                 pathname: "/checkout",
                 state: {times: this.state.times, url: this.state.url, selectedFiles: this.state.selectedFiles}

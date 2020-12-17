@@ -42,3 +42,7 @@ export function getUsedSeconds(ampm, hour, minute){
     return data;
 
 }
+
+export function saveContent(){
+
+}
