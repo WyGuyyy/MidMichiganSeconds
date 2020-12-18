@@ -114,6 +114,7 @@ class Upload extends React.Component{
             photoWrapper.id = "photo-item-" + count;
             aPhotoInput.id = "photo-" + count;
             aPhotoInput.type = "file";
+            aPhotoInput.name = "files";
             aPhotoInput.style.display = "none";
             aPhotoInput.disabled = true;
             aPhotoInput.onchange = e => this.handleFileUpload(e);
@@ -367,6 +368,8 @@ class Upload extends React.Component{
         var idNum = event.target.id.split("-")[2];
 
         var file = event.target.files[0];
+
+        console.log(event.target.files[0]);
 
         var img = new Image();
         var imgwidth = 0;
