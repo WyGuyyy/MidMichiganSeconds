@@ -1,22 +1,25 @@
-const processCustomerOrder = async (data) => {
+const processCustomerOrder = async (orderData) => {
 
     var status = "";
 
-    status = await fetch("http://localhost:8080/api/order/capture", {  
-            method: "POST",                          
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({token: data.facilitatorAccessToken, order_id: data.orderID, payer_id: data.payerID})
-            }).catch(console.log);
+    var status = await fetch("http://localhost:8080/api/order/capture", {  
+        method: "POST",                 
+        body: orderData
+        }).then(result => console.log(result)).then(data => {
+            console.log(data);
+        }).catch(console.log);
 
     return status;
 
 }
 
-export function processOrder(data){
+export async function processOrder(orderData){
     
-    var status = processCustomerOrder(data).then((value) => {
+    var status = await processCustomerOrder(orderData).then((value) => {
         return value;
     });
+
+    console.log(status);
 
     return status;
 

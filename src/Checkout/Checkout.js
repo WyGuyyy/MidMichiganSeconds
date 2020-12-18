@@ -5,7 +5,7 @@ import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import Timeline from '../Timeline/Timeline';
 import { PayPalButton } from "react-paypal-button-v2";
-import {getUsedSeconds} from '../Services/ContentService';
+import {processOrder} from '../Services/OrderService';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -132,33 +132,27 @@ class Checkout extends React.Component{
 
       onApprove = async (data, actions) => { //Start here next time and get front/back end hooked up
 
-        const orderData = new FormData();
+            const orderData = new FormData();
 
-        var files = this.state.files;
-        var order = [data.facilitatorAccessToken, data.orderID, data.payerID];
+            var files = this.state.files;
+            var order = [data.facilitatorAccessToken, data.orderID, data.payerID];
 
-        console.log(JSON.stringify(files));
+            console.log(JSON.stringify(files));
 
-        files.forEach(file=>{
-            orderData.append("files", file);
-        });
-        orderData.append("order[]", order);
-        orderData.append("url[]", this.state.url);
-        orderData.append("times[]", this.state.times);
+            files.forEach(file=>{
+                orderData.append("files", file);
+            });
+            orderData.append("order[]", order);
+            orderData.append("url[]", this.state.url);
+            orderData.append("times[]", this.state.times);
 
-        var status = await fetch("http://localhost:8080/api/order/capture", {  
-            method: "POST",                 
-            body: orderData
-            }).catch(console.log);
+            var status = processOrder(orderData);
 
-        /*if(status === 1){
-            await fetch("http://192.168.1.10:8080/api/file/" + contentID , { 
-                method: "POST",                          
-                body: fileData
-                }).catch(console.log);
-            }else{
+            this.props.history.replace({
+                pathname: "/Success",
+                state: {processed: true}
+            });
 
-            }*/
         }
 
       goToUpload(event){
