@@ -22,8 +22,6 @@ class Upload extends React.Component{
             pivot: -1
         };
 
-        console.log(props.history.location.state.times);
-
     }
     
     componentDidMount(){ 

@@ -104,8 +104,33 @@ class Picktime extends React.Component{
         var minute = this.state.minute;
 
         var data = getUsedSeconds(ampm, hour, minute);
-
+        
         return data;
+    }
+
+    getSelected(){
+        var selectedTimes = this.state.times;
+        var count = 0;
+
+        var selectedItems = [];
+
+        for(count = 0; count < selectedTimes.length; count++){
+            var timeArr = selectedTimes[count].split(":");
+            var hour = timeArr[0];
+            var minute = timeArr[1];
+            var second = timeArr[2].split(" ")[0];
+            var ampm = timeArr[2].split(" ")[1];
+
+            var currHour = (this.state.hour <= 9 ? "0" + this.state.hour : this.state.hour);
+            var currMinute = (this.state.minute <= 9 ? "0" + this.state.minute : this.state.minute);
+            var currAMPM = this.state.ampm;
+
+            if(hour.localeCompare(currHour) === 0 && minute.localeCompare(currMinute) === 0 && ampm.localeCompare(currAMPM) === 0){
+                selectedItems.push(parseInt(second));
+            }
+        }
+
+        return selectedItems;
     }
 
     fillTimes(){
@@ -614,7 +639,7 @@ class Picktime extends React.Component{
                                 <Dropdown itemTitle={"Minute"} items={this.produceMinuteArray()} customClick={e => this.minuteClick(e)}/>
                             </div>
                             <div className="Picktime-Dropdown-Second">
-                                <Dropdown itemTitle={"Second"} items={this.getSeconds()} customClick={e => this.secondClick(e)} isReady={secondsReady} seconds={this.state.seconds}/>
+                                <Dropdown itemTitle={"Second"} items={this.getSeconds()} selectedItems={this.getSelected()} customClick={e => this.secondClick(e)} isReady={secondsReady} seconds={this.state.seconds}/>
                             </div>
                         </div>
                         <button className="Picktime-Button-Add" onClick={e => this.addTimes(e)}>Add</button>

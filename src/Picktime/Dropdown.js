@@ -11,22 +11,21 @@ class Dropdown extends React.Component{
         super(props);
 
         this.state = {
-            items: this.props.items,
-            itemTitle: this.props.itemTitle,
-            itemMaximum: this.props.itemMaximum,
-            isReady: this.props.isReady
+            items: props.items,
+            selectedItems: props.selectedItems,
+            itemTitle: props.itemTitle,
+            itemMaximum: props.itemMaximum,
+            isReady: props.isReady
         };
 
     }
     
     componentDidMount(){ 
-        
-        this.fillHoursOrMinutes();
 
         if(this.state.itemTitle.localeCompare("Hour") === 0 || this.state.itemTitle.localeCompare("Minute") === 0){
             this.fillHoursOrMinutes();
         }else{
-            this.fillSeconds();
+           // this.fillSeconds();
         }
     }
 
@@ -64,12 +63,13 @@ class Dropdown extends React.Component{
 
     fillSeconds(){
 
-        var items = this.state.items;
+        var items = this.props.items;
 
         items.then((value) => {
 
             var dropdownMenu = document.getElementsByClassName("menuDropdown")[2];
             var secondsArr = this.props.seconds;
+            var selectedItems = this.props.selectedItems;
 
             while(dropdownMenu.lastElementChild){
                 dropdownMenu.removeChild(dropdownMenu.lastElementChild);
@@ -84,7 +84,7 @@ class Dropdown extends React.Component{
 
                 itemWrapper.classList.add('Dropdown-Item-Wrapper');
 
-                if(value[count].active && this.props.isReady){
+                if(value[count].active && this.props.isReady && !selectedItems.includes(value[count].value)){
                     item.classList.add('dropdownItem');
 
                     if(secondsArr.includes(count)){

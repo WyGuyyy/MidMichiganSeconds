@@ -78,6 +78,7 @@
     align-items: center;
     background: #61b7e2;
     padding: 10px;
+    border-radius: 20px;
 }
 
 .FAQ-Content-2{
@@ -88,6 +89,8 @@
     align-items: center;
     background: #55a0c5;
     padding: 10px;
+    border-radius: 20px;
+    
 }
 
 .FAQ-Title{

@@ -1,6 +1,8 @@
 import React from 'react';
 import './Slideshow.css';
 import Clock from "./Clock"
+import {retrieveSlideshowData} from '../Services/ContentService';
+import {retrieveBlob} from '../Services/BlobService';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -73,7 +75,7 @@ class Slideshow extends React.Component{
         second = this.state.date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'}).split(":")[2].split(" ")[0];
 
         //await fetch("https://localhost:8443/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {
-        await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
+        /*await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
             method: "GET",                          
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +92,11 @@ class Slideshow extends React.Component{
 
                 }
             )
-            .catch(console.log);
+            .catch(console.log);*/
+
+            var slideshowDataArr = await retrieveSlideshowData(ampm, hour, minute, second);
+            var contentID = slideshowDataArr[0];
+            var newLink = slideshowDataArr[1];
                 
             if(!contentID){
 
@@ -106,20 +112,7 @@ class Slideshow extends React.Component{
 
             }else{
                 //await fetch("https://localhost:8443/api/file/" + contentID  , { 
-                await fetch("http://localhost:8080/api/file/" + contentID  , { 
-                    method: "GET"                         
-                    })
-                    .then(res => res.text())
-                    .then(
-                        (text) => {
-
-                            var result = text.length ? JSON.parse(text) : {};
-                            fileResult = result;
-                            
-                            
-                        }
-                    )
-                .catch(console.log);
+                var fileResult = await retrieveBlob(contentID);
 
                 console.log(fileResult);
 

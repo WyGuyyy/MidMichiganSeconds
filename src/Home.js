@@ -67,10 +67,22 @@ class Home extends React.Component{
             slideshowHeight: newSlideshowHeight
         });
     }
+
+    goToPicktime(event){
+        this.props.history.push("/Picktime");
+    }
+
+    goToFAQS(event){
+        this.props.history.push("/FAQ");
+    }
+
+    goToTestimonials(event){
+        this.props.history.push("/Testimonial");
+    }
     
     render(){
 
-        var registerBannerText = "REGISTER";
+        var registerBannerText = "PURCHASE SECONDS";
         var registerTileText = "Feature your business on MidMichigan Seconds";
         var faqsBannerText = "FAQS";
         var faqsTileText = "Frequently asked questions";
@@ -129,9 +141,9 @@ class Home extends React.Component{
                 </section>
                 <section className="Home-Bottom-Section" style={{height: this.state.bottomSectionHeight}}>
                     <div className="Home-Actions-Wrapper" style={{height: this.state.actionAreaHeight}}>
-                        <ImageTextTile bannerText={registerBannerText} tileText={registerTileText} imageSrc={register}/>
-                        <ImageTextTile bannerText={faqsBannerText} tileText={faqsTileText} imageSrc={faqs}/>
-                        <ImageTextTile bannerText={testimonialBannerText} tileText={testimonialTileText} imageSrc={testimonial}/>
+                        <ImageTextTile bannerText={registerBannerText} tileText={registerTileText} imageSrc={register} customClick={e => this.goToPicktime(e)}/>
+                        <ImageTextTile bannerText={faqsBannerText} tileText={faqsTileText} imageSrc={faqs} customClick={e => this.goToFAQS(e)}/>
+                        <ImageTextTile bannerText={testimonialBannerText} tileText={testimonialTileText} imageSrc={testimonial} customClick={e => this.goToTestimonials(e)}/>
                     </div>
                     <div className="Home-Subscribe-Wrapper" style={{height: this.state.subscribeHeight}}>
                         <label className="subscribeLabel">Subscribe and stay up to date </label>

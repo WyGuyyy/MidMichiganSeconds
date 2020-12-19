@@ -12,7 +12,7 @@ class ImageTextTile extends React.Component{
 
         this.state={
             bannerText: this.props.bannerText,
-            tileText: this.props.tileText,
+            tileText: this.props.tileText
         }
 
     }
@@ -31,7 +31,7 @@ class ImageTextTile extends React.Component{
     render(){
 
         return(
-            <div className="Image-Text-Tile-Container" >
+            <div className="Image-Text-Tile-Container" onClick={this.props.customClick}>
                 <div className="Image-Text-Tile-Banner">
                     <h2 className="Image-Text-Tile-Banner-Text">{this.state.bannerText}</h2>
                 </div>

@@ -14,35 +14,48 @@ const getContent = async (ampm, hour, minute) => {
                         return result;
         }
     )
-
+        
     return seconds;
 
 }
 
 const getSlideshowData = async (ampm, hour, minute, second) => {
 
-    var seconds = "";
+    var slideshowDataArr = [];
 
-     seconds = await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
-                method: "GET",                          
-                headers: {"Content-Type": "application/json"}
-                })
-                .then(res => res.text())
-                .then(
-                    (text) => {
+    var contentID = 0;
+    var newLink = "";
 
-                        var result = text.length ? JSON.parse(text) : {};
-                        return result;
-        }
-    )
+     await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
+        method: "GET",                          
+        headers: {"Content-Type": "application/json"}
+        })
+        .then(res => res.text())
+        .then(
+            (text) => {
 
-    return seconds;
+                var result = (text.length ? JSON.parse(text) : {});
+
+                contentID = result[0].content_id;
+                newLink = result[0].url;
+
+                slideshowDataArr.push(contentID);
+                slideshowDataArr.push(newLink);
+
+            }
+        )
+        .catch(console.log);
+
+    return slideshowDataArr;
 
 }
 
 export function getUsedSeconds(ampm, hour, minute){
     
-    var data = getContent(ampm, 12, 12).then((value) => {
+    hour = (hour <= 9 ? "0" + hour : "" + hour);
+    minute = (minute <= 9 ? "0" + minute : "" + minute);
+
+    var data = getContent(ampm, hour, minute).then((seconds) => {
 
         var secondArr = [];
         var count = 0;
@@ -51,8 +64,8 @@ export function getUsedSeconds(ampm, hour, minute){
             secondArr.push({value: count, active: true});
         }
 
-        for(count = 0; count < value.length; count++){
-            var sec = parseInt(value[count].second);
+        for(count = 0; count < seconds.length; count++){
+            var sec = parseInt(seconds[count].second);
             secondArr[sec] = {value: secondArr[sec].value, active: false};
         }
 
@@ -64,6 +77,12 @@ export function getUsedSeconds(ampm, hour, minute){
 
 }
 
-export function retrieveSlideshowData(ampm, hour, minute, second){
+export async function retrieveSlideshowData(ampm, hour, minute, second){
+
+    var slideshowDataArr = [];
+
+    slideshowDataArr = await getSlideshowData(ampm, hour, minute, second);
+
+    return slideshowDataArr;
 
 }

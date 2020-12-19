@@ -23,7 +23,7 @@
     top: 70%;
     left: -10px;
     background: #386880;
-    width: 220px;
+    width: 350px;
     height: 50px;
     padding: 5px;
 }
@@ -59,7 +59,7 @@
     font-size: 25px;
 }
 
-@media(max-width: 1023px){
+@media(max-width: 1255px){
     .Image-Text-Tile-Container{
         width: 85%;
         height: 1000px;
@@ -75,13 +75,22 @@
     }
 }
 
-/*@media(max-width: 999px){
+@media(max-width: 425px){
     .Image-Text-Tile-Banner{
-        width: 170px;
+        width: 200px;
+        top: 75%;
     }
     
     .Image-Text-Tile-Banner-Text{
         color: white;
         font-size: 20px;
     }
-}*/
+}
+
+@media(max-width: 320px){
+    .Image-Text-Tile-Tile-Text{
+        color: black;
+        font-size: 20px;
+    }
+
+}
