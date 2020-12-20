@@ -25,6 +25,8 @@ class ImageTile extends React.Component{
     componentDidMount(){ 
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
+
+        this.renderRandomImage();
     }
 
     //Lifecycle event preparing Slideshow component to unmount from DOM
@@ -32,6 +34,21 @@ class ImageTile extends React.Component{
         this.setState({
 
         });
+    }
+
+    renderRandomImage(){
+
+        if(this.state.area.localeCompare("") === 0){
+            var imageTile = document.getElementById("ImageTile-" + this.state.area);
+            imageTile.style.backgroundImage = this.props.imageSrc;
+        }else{
+            this.props.imageSrc.then((value) => {
+
+                var imageTile = document.getElementById("ImageTile-" + this.state.area);
+                var imageData = "data:" + value.contentType + ";base64," + value.data;
+                imageTile.style.backgroundImage = "url(" + imageData + ")";
+            });
+        }
     }
 
     updateWindowDimensions(){
@@ -64,11 +81,9 @@ class ImageTile extends React.Component{
     //Render the Slideshow component to the DOM/Screen
     render(){
 
-        console.log(this.props.imageSrc);
-
         return(
             <div className="Image-Tile-Container" style={{background: this.state.backColor, gridArea: this.state.area , width: this.state.tileWidth, height: this.state.tileHeight}}>
-                <div className="imageTile" style={{backgroundImage: "url(" + this.props.imageSrc + ")"}}>
+                <div className="imageTile" style={{backgroundImage: "url(" + this.props.imageSrc + ")"}} id={"ImageTile-" + this.state.area}>
 
                 </div>
             </div>

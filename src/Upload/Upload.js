@@ -385,7 +385,13 @@ class Upload extends React.Component{
                 imgwidth = this.width;
                 imgheight = this.height;
 
-                if(imgwidth == 950 && imgheight == 750){
+                for(i=0; i < selectedTimes.length; i++){
+                    var index = tempTimes.indexOf(selectedTimes[i]);
+                    tempFiles[index] = event.target.files[0];
+                    document.getElementById("label-" + index).innerHTML = event.target.files[0].name;
+                }
+
+                /*if(imgwidth == 950 && imgheight == 750){
 
                     for(i=0; i < selectedTimes.length; i++){
                         var index = tempTimes.indexOf(selectedTimes[i]);
@@ -395,7 +401,7 @@ class Upload extends React.Component{
 
                 }else{
                     alert("Image dimensions are invalid. The image must be 950(width)x750(height).");
-                }
+                }*/
             }
 
             this.setState({

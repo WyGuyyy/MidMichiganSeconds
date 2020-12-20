@@ -22,6 +22,7 @@ import view from '../src/Assets/viewour.PNG';
 import register from '../src/Assets/register.jpg';
 import faqs from '../src/Assets/faqs.jpg';
 import testimonial from '../src/Assets/testimonial.jpg';
+import {retrieveRandomBlob} from './Services/BlobService';
 
 class Home extends React.Component{
     constructor(props){
@@ -55,6 +56,13 @@ class Home extends React.Component{
         this.setState({
 
         });
+    }
+
+    decideRandomImage(){
+
+        var result = retrieveRandomBlob();
+        return result;
+
     }
 
     updateWindowDimensions(){
@@ -106,19 +114,19 @@ class Home extends React.Component{
                     </div>
                     <div className="Home-Tile-Wrapper" style={{height: this.state.tileAreaHeight}}>
                             <div className="Home-Tile-Grid" >
-                                <ImageTile tileArea="tile1" backColor="#963700" float={false} imageSrc={company}/>
-                                <ImageTile tileArea="tile2" backColor="#4585b0" float={false} imageSrc={starbucks}/>
-                                <ImageTile tileArea="tile3" backColor="#636363" float={false} imageSrc={exp}/>
+                                <ImageTile tileArea="tile1" backColor="#963700" float={false} imageSrc={this.decideRandomImage()}/>
+                                <ImageTile tileArea="tile2" backColor="#4585b0" float={false} imageSrc={this.decideRandomImage()}/>
+                                <ImageTile tileArea="tile3" backColor="#636363" float={false} imageSrc={this.decideRandomImage()}/>
 
-                                <ImageTile tileArea="tile4" backColor="#36434d" float={false} imageSrc={jimbo}/>
+                                <ImageTile tileArea="tile4" backColor="#36434d" float={false} imageSrc={this.decideRandomImage()}/>
                                 <div className="floatingTile">
                                     <ImageTile tileArea="" backColor="#1a2126" float={true} imageSrc={view}/>
                                 </div>
-                                <ImageTile tileArea="tile5" backColor="#80674a" float={false} imageSrc={kennedy}/>
+                                <ImageTile tileArea="tile5" backColor="#80674a" float={false} imageSrc={this.decideRandomImage()}/>
 
-                                <ImageTile tileArea="tile6" backColor="#593b00" float={false} imageSrc={lorum}/>
-                                <ImageTile tileArea="tile7" backColor="#2e2e2e" float={false} imageSrc={teknix}/>
-                                <ImageTile tileArea="tile8" backColor="#633300" float={false} imageSrc={construction}/>
+                                <ImageTile tileArea="tile6" backColor="#593b00" float={false} imageSrc={this.decideRandomImage()}/>
+                                <ImageTile tileArea="tile7" backColor="#2e2e2e" float={false} imageSrc={this.decideRandomImage()}/>
+                                <ImageTile tileArea="tile8" backColor="#633300" float={false} imageSrc={this.decideRandomImage()}/>
                             </div>
                     </div>
                     <div className="Home-Meet-Wrapper" style={{height: this.state.meetUsHeight}}>
@@ -146,8 +154,7 @@ class Home extends React.Component{
                         <ImageTextTile bannerText={testimonialBannerText} tileText={testimonialTileText} imageSrc={testimonial} customClick={e => this.goToTestimonials(e)}/>
                     </div>
                     <div className="Home-Subscribe-Wrapper" style={{height: this.state.subscribeHeight}}>
-                        <label className="subscribeLabel">Subscribe and stay up to date </label>
-                        <input className="subscribeInput"/>
+                        <button className="Home-PurchaseSeconds-Footer-Link">Purchase Seconds</button>
                     </div>
                     <footer className="homeFooter" stlye={{height: this.state.footerHeight}}>
                         <p className="Home-Footer-Text">copyright Jason Spaude and Wyatt Towne</p>
@@ -163,3 +170,6 @@ export default Home;
 
 
 //"react-router-dom": "^6.0.0-alpha.1",
+
+//<label className="subscribeLabel">Subscribe and stay up to date </label>
+//<input className="subscribeInput"/>

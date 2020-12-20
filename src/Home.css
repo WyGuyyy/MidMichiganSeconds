@@ -232,6 +232,19 @@
     color: white;
 }
 
+.Home-PurchaseSeconds-Footer-Link{
+    width: 250px;
+    background: black;
+    border: none;
+    color: white;
+    font-size: 25px;
+    transition-duration: .75s;
+}
+
+.Home-PurchaseSeconds-Footer-Link:hover{
+    color: #00aaff;
+}
+
 @media(max-width: 1500px){
     .Home-Middle-Section{
         height: 5000px;

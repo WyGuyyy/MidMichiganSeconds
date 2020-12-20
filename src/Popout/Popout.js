@@ -54,7 +54,7 @@ class Popout extends React.Component{
                     <button className="popoutButton" onClick={e => this.goToPicktime(e)}>PURCHASE SECONDS</button>
                     <button className="popoutButton" onClick={e => this.goToFAQ(e)}>FAQS</button>
                     <button className="popoutButton" onClick={e => this.goToTestimonials(e)}>TESTIMONIALS</button>
-                    <button className="popoutButton">TERMS & CONDITIONS</button>
+                    <a href={process.env.PUBLIC_URL + "/assets/Terms_and_Conditions.pdf"} download=""><button className="popoutButton">TERMS & CONDITIONS</button></a>
                 </div>
             </div>
         );
