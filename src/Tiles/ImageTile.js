@@ -82,7 +82,7 @@ class ImageTile extends React.Component{
     render(){
 
         return(
-            <div className="Image-Tile-Container" style={{background: this.state.backColor, gridArea: this.state.area , width: this.state.tileWidth, height: this.state.tileHeight}}>
+            <div className="Image-Tile-Container" style={{background: this.state.backColor, gridArea: this.state.area , width: this.state.tileWidth, height: this.state.tileHeight}} id={"ImageTileContainer-" + this.state.area}>
                 <div className="imageTile" style={{backgroundImage: "url(" + this.props.imageSrc + ")"}} id={"ImageTile-" + this.state.area}>
 
                 </div>

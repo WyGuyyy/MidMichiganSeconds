@@ -26,6 +26,7 @@
 .Home-Middle-Section{
     width: 100%;
     height: 3900px;
+    background: #386880;
 }
 
 .Home-WhatIs-Wrapper{
@@ -247,23 +248,21 @@
 
 @media(max-width: 1500px){
     .Home-Middle-Section{
-        height: 5000px;
+        height: 4000px;
     }
 
     .Home-Tile-Grid{
         display: grid;
         grid-template-areas:
         'tile1 tile2'
-        'tile3 tile4'
-        'tile5 tile6'
-        'tile7 tile8';
+        'tile3 tile4';
         justify-content: center;
         align-items: center;
-        height: 2000px;
+        height: 1000px;
     }
 
     .Home-Tile-Wrapper{
-        height: 2600px;
+        height: 1600px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -319,7 +318,7 @@
 
 @media(max-width: 999px){ /* start here next time - get this media query set */
     .Home-Middle-Section{
-        height: 6900px;
+        height: 5000px;
     }
 
     .Home-Tile-Grid{
@@ -328,18 +327,14 @@
         'tile1'
         'tile2'
         'tile3'
-        'tile4'
-        'tile5'
-        'tile6'
-        'tile7'
-        'tile8';
+        'tile4';
         justify-content: center;
         align-items: center;
-        height: 4000px;
+        height: 2000px;
     }
 
     .Home-Tile-Wrapper{
-        height: 4500px;
+        height: 2500px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -379,7 +374,7 @@
 @media(max-width: 600px){ /* start here next time - get this media query set */
 
     .Home-Middle-Section{
-        height: 7300px;
+        height: 5300px;
     }
 
     .Meet-Area-Title{
@@ -411,7 +406,7 @@
 @media(max-width: 475px){ /* start here next time - get this media query set */
     
     .Home-Middle-Section{
-        height: 7800px;
+        height: 5800px;
     }
     
     .Home-Meet-Wrapper{

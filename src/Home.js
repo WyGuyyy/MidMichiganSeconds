@@ -74,6 +74,20 @@ class Home extends React.Component{
             topSectionHeight: newTopSectionHeight + 15,
             slideshowHeight: newSlideshowHeight
         });
+
+        if(window.innerWidth <= 1500){
+
+            var count = 0;
+            for(count = 5; count <= 8; count++){
+                document.getElementById("ImageTileContainer-tile" + count).style.display = "none";
+            }
+        }else{
+
+            var count = 0;
+            for(count = 5; count <= 8; count++){
+                document.getElementById("ImageTileContainer-tile" + count).style.display = "flex";
+            }
+        }
     }
 
     goToPicktime(event){
