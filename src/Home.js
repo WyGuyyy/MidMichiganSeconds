@@ -168,7 +168,7 @@ class Home extends React.Component{
                         <ImageTextTile bannerText={testimonialBannerText} tileText={testimonialTileText} imageSrc={testimonial} customClick={e => this.goToTestimonials(e)}/>
                     </div>
                     <div className="Home-Subscribe-Wrapper" style={{height: this.state.subscribeHeight}}>
-                        <button className="Home-PurchaseSeconds-Footer-Link">Purchase Seconds</button>
+                        <button className="Home-PurchaseSeconds-Footer-Link" onClick={e => this.goToPicktime(e)}>Purchase Seconds</button>
                     </div>
                     <footer className="homeFooter" stlye={{height: this.state.footerHeight}}>
                         <p className="Home-Footer-Text">copyright Jason Spaude and Wyatt Towne</p>
