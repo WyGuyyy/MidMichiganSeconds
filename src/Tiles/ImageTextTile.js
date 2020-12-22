@@ -2,7 +2,7 @@ import React from 'react';
 import './ImageTextTile.css';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import aPhoto from '../Assets/midmi.jpg';
+/*import aPhoto from '../Assets/midmi.jpg';*/
 //import wy from '../src/Assets/wy.PNG';
 //import ja from '../src/Assets/ja.PNG';
 
