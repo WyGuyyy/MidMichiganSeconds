@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import './FAQ.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
-import midmiclipped from '../Assets/midmiclipped.PNG';
+/*import midmiclipped from '../Assets/midmiclipped.PNG';*/
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ class FAQ extends React.Component{
     
     render(){
 
-        var backgroundImage = midmiclipped;
+        var backgroundImage = process.env.PUBLIC_URL + "/assets/midmiclipped.PNG";
 
         return(
             <div className="faqContainer">
