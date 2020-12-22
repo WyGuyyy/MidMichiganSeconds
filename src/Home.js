@@ -119,6 +119,8 @@ class Home extends React.Component{
         var faqs = process.env.PUBLIC_URL + "/assets/faqs.jpg";
         var testimonial = process.env.PUBLIC_URL + "/assets/testimonial.jpg";
 
+        var midmi = process.env.PUBLIC_URL + "/assets/midmi.jpg";
+
         return(
             <div className="homeContainer">
                 <Popout hist={this.props.history}/>
@@ -131,7 +133,7 @@ class Home extends React.Component{
                     </div>
                 </section>
                 <section className="Home-Middle-Section" style={{height: this.state.middleSectionHeight}}>
-                    <div className="Home-WhatIs-Wrapper" style={{height: this.state.whatIsHeight}}>
+                    <div className="Home-WhatIs-Wrapper" style={{height: this.state.whatIsHeight, backgroundImage: "url(" + midmi + ")"}}>
                         <TextTile_TBT />
                     </div>
                     <div className="Home-Tile-Wrapper" style={{height: this.state.tileAreaHeight}}>
