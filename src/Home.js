@@ -8,7 +8,7 @@ import ImageTextTile from './Tiles/ImageTextTile';
 import Popout from './Popout/Popout';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import wy from '../src/Assets/wy.PNG';
+/*import wy from '../src/Assets/wy.PNG';
 import ja from '../src/Assets/ja.PNG';
 import company from '../src/Assets/company.png';
 import construction from '../src/Assets/construction.png';
@@ -17,11 +17,11 @@ import jimbo from '../src/Assets/jimbo.png';
 import kennedy from '../src/Assets/kennedy.png';
 import lorum from '../src/Assets/lorum.jpg';
 import starbucks from '../src/Assets/starbucks.png';
-import teknix from '../src/Assets/teknix.jpg';
-import view from '../src/Assets/viewour.PNG';
+import teknix from '../src/Assets/teknix.jpg';*/
+/*import view from '../src/Assets/viewour.PNG';
 import register from '../src/Assets/register.jpg';
 import faqs from '../src/Assets/faqs.jpg';
-import testimonial from '../src/Assets/testimonial.jpg';
+import testimonial from '../src/Assets/testimonial.jpg';*/
 import {retrieveRandomBlob} from './Services/BlobService';
 
 class Home extends React.Component{
@@ -110,6 +110,14 @@ class Home extends React.Component{
         var faqsTileText = "Frequently asked questions";
         var testimonialBannerText = "TESTIMONIALS";
         var testimonialTileText = "Hear from MidMichigan Seconds users";
+
+        var wy = process.env.PUBLIC_URL + "/assets/wy.PNG";
+        var ja = process.env.PUBLIC_URL + "/assets/ja.PNG";
+
+        var view = process.env.PUBLIC_URL + "/assets/viewour.PNG";
+        var register = process.env.PUBLIC_URL + "/assets/register.jpg";
+        var faqs = process.env.PUBLIC_URL + "/assets/faqs.jpg";
+        var testimonial = process.env.PUBLIC_URL + "/assets/testimonial.jpg";
 
         return(
             <div className="homeContainer">
