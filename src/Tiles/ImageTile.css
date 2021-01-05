@@ -6,10 +6,21 @@
     align-items: center;
 }
 
+.Image-Tile-Frame{
+    width: 95%;
+    height: 95%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .imageTile{
     /*background-image: url(../Assets/midmi.jpg);*/
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
-    width: 90%;
+    width: 100%;
     height: 90%;
 }

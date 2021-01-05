@@ -1,8 +1,10 @@
+import {baseURI} from './APIService';
+
 const getContent = async (ampm, hour, minute) => {
 
     var seconds = "";
 
-     seconds = await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute  , {  
+     seconds = await fetch(baseURI + "/api/content/" + ampm + "/" + hour + "/" + minute  , {  
                 method: "GET",                          
                 headers: {"Content-Type": "application/json"}
                 })
@@ -26,7 +28,7 @@ const getSlideshowData = async (ampm, hour, minute, second) => {
     var contentID = 0;
     var newLink = "";
 
-     await fetch("http://localhost:8080/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
+     await fetch(baseURI + "/api/content/" + ampm + "/" + hour + "/" + minute + "/" + second  , {  
         method: "GET",                          
         headers: {"Content-Type": "application/json"}
         })

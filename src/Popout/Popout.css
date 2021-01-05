@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(22, 22, 22, 0.5);
     width: 250px;
     height: 450px;
 }

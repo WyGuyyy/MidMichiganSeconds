@@ -1,8 +1,10 @@
+import {baseURI} from './APIService';
+
 const getBlob = async (contentID) => {
 
     var fileResult;
 
-    await fetch("http://localhost:8080/api/file/" + contentID  , { 
+    await fetch(baseURI + "/api/file/" + contentID  , { 
         method: "GET"                         
         })
         .then(res => res.text())
@@ -25,7 +27,7 @@ const getRandomBlob = async () => {
 
     var fileResult;
 
-    await fetch("http://localhost:8080/api/file", { 
+    await fetch(baseURI + "/api/file", { 
         method: "GET"                         
         })
         .then(res => res.text())

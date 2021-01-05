@@ -1,8 +1,10 @@
+import {baseURI} from './APIService';
+
 const processCustomerOrder = async (orderData) => {
 
     var status = "";
 
-    var status = await fetch("http://localhost:8080/api/order/capture", {  
+    var status = await fetch(baseURI + "/api/order/capture", {  
         method: "POST",                 
         body: orderData
         }).then(result => result.text()).then(data => {
