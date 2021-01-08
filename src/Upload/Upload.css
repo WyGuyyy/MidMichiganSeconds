@@ -136,9 +136,9 @@
     width: 33.33%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -150,6 +150,7 @@
 .Upload-Item-Image-Label{
     margin-left: 20px;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .Upload-Item-URL-Wrapper{
@@ -196,6 +197,18 @@
     align-items: center;
     position: relative;
     top: 50px;
+}
+
+.Upload-Item-Image-Preview{
+    height: 40px;
+    width: 40px;
+    background: #61b7e2;
+    border: none;
+    color: black;
+}
+
+.Upload-Item-Image-Preview:hover{
+    background: #00aaff;
 }
 
 /* Start here next time - need to figure out resizing for upload page */

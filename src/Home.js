@@ -88,6 +88,7 @@ class Home extends React.Component{
                 document.getElementById("ImageTileContainer-tile" + count).style.display = "flex";
             }
         }
+
     }
 
     goToPicktime(event){

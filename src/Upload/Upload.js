@@ -4,6 +4,7 @@ import './Upload.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import Timeline from '../Timeline/Timeline';
+import ImageCropComponent from '../ImageCropComponent/ImageCropComponent';
 import {getUsedSeconds} from '../Services/ContentService';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
@@ -84,6 +85,12 @@ class Upload extends React.Component{
             var photoWrapper = document.createElement("div");
             var aPhotoInput = document.createElement("input");
             var aLabel = document.createElement("Label");
+           /* var previewButton = document.createElement("button");
+
+            var previewIcon = document.createElement("i");
+            previewIcon.classList.add("fa");
+            previewIcon.classList.add("fa-eye");
+            previewIcon.id = "iconPreview-" + count;*/
 
             var urlWrapper = document.createElement("div");
             var aURLInput = document.createElement("input");
@@ -98,6 +105,7 @@ class Upload extends React.Component{
             photoWrapper.classList.add("Upload-Item-Image-Wrapper");
             aPhotoInput.classList.add("Upload-Item-Image-Input");
             aLabel.classList.add("Upload-Item-Image-Label");
+            //previewButton.classList.add("Upload-Item-Image-Preview");
 
             urlWrapper.classList.add("Upload-Item-URL-Wrapper");
             aURLInput.classList.add("Upload-Item-URL-Input");
@@ -124,8 +132,12 @@ class Upload extends React.Component{
             aLabel.onmouseout = e => {e.target.style.color = "white";}
             aLabel.id = "label-" + count;
 
+            /*previewButton.onclick = e => this.renderImageCropper(e);
+            previewButton.appendChild(previewIcon);*/
+
             photoWrapper.appendChild(aPhotoInput);
             photoWrapper.appendChild(aLabel);
+            //photoWrapper.appendChild(previewButton);
 
             urlWrapper.id = "url-item-" + count;
             aURLInput.id = "url-" + count
@@ -143,6 +155,10 @@ class Upload extends React.Component{
 
             selectedList.appendChild(parentDiv);
         }
+
+      }
+
+      renderImageCropper(event){
 
       }
 
@@ -586,3 +602,4 @@ export default Upload;
 
 
 //"react-router-dom": "^6.0.0-alpha.1",
+//<ImageCropComponent />
