@@ -148,6 +148,8 @@ class Checkout extends React.Component{
 
             var status = processOrder(orderData);
 
+            console.log(status);
+
             this.props.history.replace({
                 pathname: "/Success",
                 state: {processed: true}

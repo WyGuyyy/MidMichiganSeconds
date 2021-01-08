@@ -21,8 +21,8 @@ class PaypalButton extends React.Component {
                 currency={currency}
                 onApprove={(data, actions) => onApprove(data, actions)}
                 options={{
-                  clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG",
-                  disableFunding: "card"
+                  disableFunding: "credit",
+                  clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG"
                 }}
             />
         </div>
