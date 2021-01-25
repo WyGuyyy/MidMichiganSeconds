@@ -101,7 +101,7 @@ class Slideshow extends React.Component{
             if(!contentID){
 
                 var count = (this.state.defaultCount == 6 ? 1 : this.state.defaultCount + 1);
-                var newPath = "../assets/default" + count + ".jpg";
+                var newPath = "/assets/default" + count + ".jpg";
 
                 this.setState({
                     usingDefault: true,
@@ -134,7 +134,7 @@ class Slideshow extends React.Component{
         var imgPath;
 
         if(this.state.usingDefault){
-            imgPath = this.state.path; //imgPath = process.env.PUBLIC_URL + this.state.path;
+            imgPath = process.env.PUBLIC_URL + this.state.path;
         }else{
             imgPath = this.state.arrayBuffer; 
         }
