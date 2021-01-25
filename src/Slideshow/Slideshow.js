@@ -134,7 +134,7 @@ class Slideshow extends React.Component{
         var imgPath;
 
         if(this.state.usingDefault){
-            imgPath = process.env.PUBLIC_URL + this.state.path;
+            imgPath = this.state.path; //imgPath = process.env.PUBLIC_URL + this.state.path;
         }else{
             imgPath = this.state.arrayBuffer; 
         }
