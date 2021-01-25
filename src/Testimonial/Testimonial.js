@@ -2,6 +2,7 @@ import React from 'react';
 import './Testimonial.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
+import TestimonialShowcaseBox from './TestimonialShowcaseBox';
 /*import midmiclipped from '../Assets/midmiclipped.PNG';*/
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
@@ -29,6 +30,12 @@ class Testimonial extends React.Component{
 
         var backgroundImage = process.env.PUBLIC_URL + "/assets/midmiclipped.PNG";
 
+        var testimonial1 = "I've lived in Saginaw for almost 20 years because of the incredible people in that region - including Jason and Wyatt. These guys are driven, always striving to help others and I am so excited and proud that they are creating a site to showcase the amazing state of Michigan. I highly recommend them and Mid-Michigan Seconds!";
+        var testimonial2 = "My fiancé and I love exploring mid-Michigan, and are always looking for new places to go. This platform gives us the opportunity to share our experiences with others who also like to explore!";
+
+        var sig1 = "-Kaitlyn Cole ~ Kaitlyn's Creations";
+        var sig2 = "-Shelby Pitt ~ Hartwick Pines";
+
         return(
             <div className="testimonialContainer">
                 <Popout hist={this.props.history}/>
@@ -46,41 +53,8 @@ class Testimonial extends React.Component{
                         </div>
                     </div>
                     <div className="Testimonial-Content-Wrapper">
-                        <div className="Testimonial-Content-1">
-                            <div className="Testimonial-Content-TopWrapper-1">
-                                <p className="Testimonial-Content-Text"></p>
-                                <div className="Testimonial-Content-Image"></div>
-                            </div>
-                            <div className="Testimonial-Content-BottomWrapper-1">
-                                <h1 className="Testimonial-Content-Name"></h1>
-                                <h1 className="Testimonial-Content-Job"></h1>
-                                <h1 className="Testimonial-Content-Company"></h1>
-                            </div>
-                        </div>
-
-                        <div className="Testimonial-Content-2">
-                            <div className="Testimonial-Content-TopWrapper-2">
-                                <p className="Testimonial-Content-Text"></p>
-                                <div className="Testimonial-Content-Image"></div>
-                            </div>
-                            <div className="Testimonial-Content-BottomWrapper-2">
-                                <h1 className="Testimonial-Content-Name"></h1>
-                                <h1 className="Testimonial-Content-Job"></h1>
-                                <h1 className="Testimonial-Content-Company"></h1>
-                            </div>
-                        </div>
-
-                        <div className="Testimonial-Content-3">
-                            <div className="Testimonial-Content-TopWrapper-1">
-                                <p className="Testimonial-Content-Text"></p>
-                                <div className="Testimonial-Content-Image"></div>
-                            </div>
-                            <div className="Testimonial-Content-BottomWrapper-1">
-                                <h1 className="Testimonial-Content-Name"></h1>
-                                <h1 className="Testimonial-Content-Job"></h1>
-                                <h1 className="Testimonial-Content-Company"></h1>
-                            </div>
-                        </div>
+                        <TestimonialShowcaseBox text={testimonial1} signature={sig1}/>
+                        <TestimonialShowcaseBox text={testimonial2} signature={sig2}/>
                     </div>
                 </section>
             </div>
