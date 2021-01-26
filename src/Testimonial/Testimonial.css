@@ -106,6 +106,12 @@
     }
 }
 
+@media(max-width: 375px){
+    .Testimonial-Content-Header-Title{
+        font-size: 40px;
+    }
+}
+
 @media(max-width: 320px){
     .Testimonial-Content-Header-Tile{
         width: 90%;

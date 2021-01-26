@@ -30,8 +30,8 @@ class Testimonial extends React.Component{
 
         var backgroundImage = process.env.PUBLIC_URL + "/assets/midmiclipped.PNG";
 
-        var testimonial1 = "I've lived in Saginaw for almost 20 years because of the incredible people in that region - including Jason and Wyatt. These guys are driven, always striving to help others and I am so excited and proud that they are creating a site to showcase the amazing state of Michigan. I highly recommend them and Mid-Michigan Seconds!";
-        var testimonial2 = "My fiancé and I love exploring mid-Michigan, and are always looking for new places to go. This platform gives us the opportunity to share our experiences with others who also like to explore!";
+        var testimonial1 = "\"I've lived in Saginaw for almost 20 years because of the incredible people in that region - including Jason and Wyatt. These guys are driven, always striving to help others and I am so excited and proud that they are creating a site to showcase the amazing state of Michigan. I highly recommend them and Mid-Michigan Seconds!\"";
+        var testimonial2 = "\"My fiancé and I love exploring mid-Michigan, and are always looking for new places to go. This platform gives us the opportunity to share our experiences with others who also like to explore!\"";
 
         var sig1 = "-Kaitlyn Cole ~ Kaitlyn's Creations";
         var sig2 = "-Shelby Pitt ~ Hartwick Pines";

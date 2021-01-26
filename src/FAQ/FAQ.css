@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #61b7e2;
+    background: #ffffff;
     box-shadow: 2px 2px 10px black;
 }
 
@@ -76,7 +76,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #61b7e2;
+    background: #ffffff;
     padding: 10px;
     border-radius: 20px;
 }
@@ -87,7 +87,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #55a0c5;
+    background: #eeeeee;
     padding: 10px;
     border-radius: 20px;
     
@@ -106,6 +106,12 @@
 @media(max-width: 660px){
     .FAQ-Content-Header-Tile{
         width: 300px;
+    }
+}
+
+@media(max-width: 425px){
+    .FAQ-Content-Wrapper{
+        width: 85%;
     }
 }
 
