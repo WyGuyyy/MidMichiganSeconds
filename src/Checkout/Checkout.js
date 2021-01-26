@@ -138,6 +138,7 @@ class Checkout extends React.Component{
             var order = [data.facilitatorAccessToken, data.orderID, data.payerID];
 
             console.log(JSON.stringify(files));
+            console.log(files);
 
             files.forEach(file=>{
                 orderData.append("files", file);
