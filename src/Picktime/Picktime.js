@@ -366,7 +366,6 @@ class Picktime extends React.Component{
         var timesArr = this.state.times;
 
         for(count = 0; count < focusedTimesArr.length; count++){
-            console.log(focusedTimesArr);
             var index = timesArr.indexOf(focusedTimesArr[count]);
             timesArr.splice(index, 1);
         }
@@ -600,7 +599,6 @@ class Picktime extends React.Component{
     }
 
     goToUpload(event){
-        console.log(this.props);
         this.props.history.push({
             pathname: "/Upload",
             state: {times: this.state.times}

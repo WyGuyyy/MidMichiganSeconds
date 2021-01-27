@@ -382,9 +382,7 @@ class Upload extends React.Component{
         var idNum = event.target.id.split("-")[2];
 
         var file = event.target.files[0];
-
-        console.log(event.target.files[0]);
-
+        
         var img = new Image();
         var imgwidth = 0;
         var imgheight = 0;
@@ -537,7 +535,6 @@ class Upload extends React.Component{
         });
 
         if(urlExist == 1){
-            console.log(this.state.selectedFiles);
             this.props.history.push({
                 pathname: "/checkout",
                 state: {times: this.state.times, url: this.state.url, selectedFiles: this.state.selectedFiles}

@@ -4,6 +4,7 @@ import './Checkout.css';
 import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import Timeline from '../Timeline/Timeline';
+import AlertModal from '../AlertModal/AlertModal';
 import { PayPalButton } from "react-paypal-button-v2";
 import {processOrder} from '../Services/OrderService';
 import { Fragment } from 'react';
@@ -137,9 +138,6 @@ class Checkout extends React.Component{
             var files = this.state.files;
             var order = [data.facilitatorAccessToken, data.orderID, data.payerID];
 
-            console.log(JSON.stringify(files));
-            console.log(files);
-
             files.forEach(file=>{
                 orderData.append("files", file);
             });
@@ -147,14 +145,16 @@ class Checkout extends React.Component{
             orderData.append("url[]", this.state.url);
             orderData.append("times[]", this.state.times);
 
-            var status = processOrder(orderData);
+            var status = processOrder(orderData); 
 
-            console.log(status);
-
-            this.props.history.replace({
-                pathname: "/Success",
-                state: {processed: true}
-            });
+            if(status === 5){
+                this.props.history.replace({
+                    pathname: "/Success",
+                    state: {processed: true}
+                });
+            }else{
+                document.getElementById("alertModalContainer").style.display = "inline-block";
+            }
 
         }
 
@@ -169,6 +169,7 @@ class Checkout extends React.Component{
         return(
             <div className="checkoutContainer">
                 <Popout hist={this.props.history}/>
+                <AlertModal text={"Uh oh! It appears at least one of your chosen seconds have already been purchased. The order has been canceled. Please return to the pick a second screen and try again. We apologize for any inconvenience."} btnText={"OK"}/>
                 <section className="Checkout-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Checkout-Header-Wrapper" style={{height: this.state.headerHeight}}>
                         <Header />
