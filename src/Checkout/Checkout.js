@@ -145,9 +145,9 @@ class Checkout extends React.Component{
             orderData.append("url[]", this.state.url);
             orderData.append("times[]", this.state.times);
 
-            var status = processOrder(orderData); 
+            var result = processOrder(orderData); 
 
-            if(status === 5){
+            if(result.status === 200){
                 this.props.history.replace({
                     pathname: "/Success",
                     state: {processed: true}
