@@ -114,8 +114,6 @@ class Slideshow extends React.Component{
                 //await fetch("https://localhost:8443/api/file/" + contentID  , { 
                 var fileResult = await retrieveBlob(contentID);
 
-                console.log(fileResult);
-
                 this.setState({
                     usingDefault: false,
                     path: "",
