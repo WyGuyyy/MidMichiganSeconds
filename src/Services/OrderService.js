@@ -7,9 +7,9 @@ const processCustomerOrder = async (orderData) => {
     var status = await fetch(baseURI + "/api/order/capture", {  
         method: "POST",                 
         body: orderData
-        }).then(result => result.text()).then(data => {
+        }).catch(console.log);/*.then(result => result.text()).then(data => {
             return data;
-        }).catch(console.log);
+        }).catch(console.log);*/
 
     return status;
 
