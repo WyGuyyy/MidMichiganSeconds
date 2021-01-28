@@ -145,10 +145,8 @@ class Checkout extends React.Component{
             orderData.append("times[]", this.state.times);
 
             var result = processOrder(orderData); 
-            console.log(result);
 
             result.then(value => {
-                console.log(value);
                 if(parseInt(value) === 5){
                     this.props.history.replace({
                         pathname: "/Success",
