@@ -147,6 +147,7 @@ class Checkout extends React.Component{
             var result = processOrder(orderData); 
 
             result.then(value => {
+                console.log(value);
                 if(parseInt(value) === 5){
                     this.props.history.replace({
                         pathname: "/Success",
