@@ -145,6 +145,7 @@ class Checkout extends React.Component{
             orderData.append("times[]", this.state.times);
 
             var result = processOrder(orderData); 
+            console.log(result);
 
             result.then(value => {
                 console.log(value);
