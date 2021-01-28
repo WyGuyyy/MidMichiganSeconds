@@ -18,7 +18,6 @@ class Checkout extends React.Component{
             times: props.history.location.state.times,
             url: props.history.location.state.url,
             files: props.history.location.state.selectedFiles,
-
         };
 
     }
@@ -147,16 +146,25 @@ class Checkout extends React.Component{
 
             var result = processOrder(orderData); 
 
-            console.log(result);
+            result.then(value => {
+                if(parseInt(value) === 5){
+                    this.props.history.replace({
+                        pathname: "/Success",
+                        state: {processed: true}
+                    });
+                }else{
+                    document.getElementById("alertModalContainer").style.display = "inline-block";
+                }
+            });
 
-            if(result.status === 200){
+            /*if(result.status === 200){
                 this.props.history.replace({
                     pathname: "/Success",
                     state: {processed: true}
                 });
             }else{
                 document.getElementById("alertModalContainer").style.display = "inline-block";
-            }
+            }*/
 
         }
 
