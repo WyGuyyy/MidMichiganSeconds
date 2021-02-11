@@ -53,8 +53,8 @@ class Testimonial extends React.Component{
                         </div>
                     </div>
                     <div className="Testimonial-Content-Wrapper">
-                        <TestimonialShowcaseBox text={testimonial1} signature={sig1}/>
-                        <TestimonialShowcaseBox text={testimonial2} signature={sig2}/>
+                        <TestimonialShowcaseBox text={testimonial1} signature={sig1} imageIndex={1}/>
+                        <TestimonialShowcaseBox text={testimonial2} signature={sig2} imageIndex={0}/>
                     </div>
                 </section>
             </div>
