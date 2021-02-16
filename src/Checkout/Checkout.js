@@ -5,6 +5,7 @@ import Header from "../Header/Header"
 import Popout from '../Popout/Popout';
 import Timeline from '../Timeline/Timeline';
 import AlertModal from '../AlertModal/AlertModal';
+import LoadingSpinner from './LoadingSpinner';
 import { PayPalButton } from "react-paypal-button-v2";
 import {processOrder} from '../Services/OrderService';
 import { Fragment } from 'react';
@@ -132,6 +133,8 @@ class Checkout extends React.Component{
 
       onApprove = async (data, actions) => { //Start here next time and get front/back end hooked up
 
+            document.getElementsByClassName("loaderBackground")[0].style.display = "flex";
+
             const orderData = new FormData();
 
             var files = this.state.files;
@@ -147,6 +150,7 @@ class Checkout extends React.Component{
             var result = processOrder(orderData); 
 
             result.then(value => {
+                document.getElementsByClassName("loaderBackground")[0].style.display = "none";
                 if(parseInt(value) === 5){
                     this.props.history.replace({
                         pathname: "/Success",
@@ -180,6 +184,7 @@ class Checkout extends React.Component{
             <div className="checkoutContainer">
                 <Popout hist={this.props.history}/>
                 <AlertModal text={"Uh oh! It appears at least one of your chosen seconds have already been purchased. The order has been canceled. Please return to the pick a second screen and try again. We apologize for any inconvenience."} btnText={"OK"}/>
+                <LoadingSpinner/>
                 <section className="Checkout-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Checkout-Header-Wrapper" style={{height: this.state.headerHeight}}>
                         <Header />

@@ -12,7 +12,7 @@ class PaypalButton extends React.Component {
     const { amount, currency, onApprove } = this.props;
 
     const  card = "card";
-    const credit = "credit";
+    const credit = "Credit";
 
     return (
         <div >
@@ -21,8 +21,9 @@ class PaypalButton extends React.Component {
                 currency={currency}
                 onApprove={(data, actions) => onApprove(data, actions)}
                 options={{
-                  disableFunding: "credit",
-                  clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG"
+                  disableFunding: credit,
+                  //clientId: "AYLPU7smKqDi1Jgw27Xt8tKJxrB0CnteO7qH2P1gI3_E339dPWMmcBmZwmUZpvhuikyOcuOfTXcIQDmr" // Live Client ID
+                  clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG" //Sandbox Client ID
                 }}
             />
         </div>

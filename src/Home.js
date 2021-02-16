@@ -112,8 +112,8 @@ class Home extends React.Component{
         var testimonialBannerText = "TESTIMONIALS";
         var testimonialTileText = "Hear from MidMichigan Seconds users";
 
-        var wy = process.env.PUBLIC_URL + "/assets/wy.PNG";
-        var ja = process.env.PUBLIC_URL + "/assets/ja.PNG";
+        var wy = process.env.PUBLIC_URL + "/assets/wyatt.PNG";
+        var ja = process.env.PUBLIC_URL + "/assets/jason.PNG";
 
         var view = process.env.PUBLIC_URL + "/assets/viewour.PNG";
         var register = process.env.PUBLIC_URL + "/assets/register.jpg";
@@ -157,7 +157,7 @@ class Home extends React.Component{
                     <div className="Home-Meet-Wrapper" style={{height: this.state.meetUsHeight}}>
                         <div className="Meet-Area-Text"> 
                             <h2 className="Meet-Area-Title">MEET WYATT AND JASON</h2>
-                            <p className="Meet-Area-Par">Jason and Wyatt are both born and raised in the MidMichigan region. After taking trips around the country and traveling around the world they both found their way back to the mid-michigan area and appreciated everything it has to offer from the vast expanses of water, and stunning views inland all the way to the people, shops, and businesses making the area what it is.<br/><br/>
+                            <p className="Meet-Area-Par">Jason and Wyatt were both born and raised in the MidMichigan region. After taking trips around the country and traveling around the world they both found their way back to the mid-michigan area and appreciated everything it has to offer from the vast expanses of water, and stunning views inland all the way to the people, shops, and businesses making the area what it is.<br/><br/>
                                                          Jason and Wyatt came together to create this website to promote the area and let the world see the great things it has to offer. Join them in their journey by uploading images and links to landmarks and people that make MidMichigan what it is.</p>
                         </div>
                         <div className="Meet-Area-Images"> 

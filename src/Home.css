@@ -159,14 +159,14 @@
 }
 
 .imageWyatt{
-    margin-right: 10px;
-    height: 400px;
-    width: 267px;
+    max-height: 400px;
+    max-width: 267px;
+    margin-right: 20px;
 }
 
 .imageJason{
-    height: 400px;
-    width: 267px;
+    max-height: 400px;
+    max-width: 267px;
     margin-right: 20px;
 }
 
@@ -294,6 +294,11 @@
     }
     
     .imageJason{
+        height: 400px;
+        margin-right: 0px;
+    }
+
+    .imageWyatt{
         height: 400px;
         margin-right: 0px;
     }
