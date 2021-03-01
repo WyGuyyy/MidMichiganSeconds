@@ -34,7 +34,7 @@ class Testimonial extends React.Component{
         var testimonial2 = "\"My fiancé and I love exploring mid-Michigan, and are always looking for new places to go. This platform gives us the opportunity to share our experiences with others who also like to explore!\"";
 
         var sig1 = "-Kaitlyn Cole ~ Kaitlyn's Creations";
-        var sig2 = "-Shelby Pitt ~ Hartwick Pines";
+        var sig2 = "-Shelby Pitt";
 
         return(
             <div className="testimonialContainer">
