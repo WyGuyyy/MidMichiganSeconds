@@ -183,7 +183,7 @@ class Checkout extends React.Component{
         return(
             <div className="checkoutContainer">
                 <Popout hist={this.props.history}/>
-                <AlertModal text={"Uh oh! It appears at least one of your chosen seconds have already been purchased. The order has been canceled and refunded. Please return to the pick a second screen and try again. We apologize for any inconvenience."} btnText={"OK"}/>
+                <AlertModal text={"Uh oh! It appears at least one of your chosen seconds have already been purchased. This may be due to a concurrent transaction or because you are not using a supported browser (Chrome, Edge, Firefox, and Safari). The order has been canceled. Please return to the pick a second screen and try again. We apologize for any inconvenience."} btnText={"OK"}/>
                 <LoadingSpinner/>
                 <section className="Checkout-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Checkout-Header-Wrapper" style={{height: this.state.headerHeight}}>

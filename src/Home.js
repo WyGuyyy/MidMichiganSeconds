@@ -198,3 +198,5 @@ export default Home;
 
 //<label className="subscribeLabel">Subscribe and stay up to date </label>
 //<input className="subscribeInput"/>
+
+//<ImageTile tileArea="" backColor="#1a2126" float={true} imageSrc={view}/>

@@ -3,6 +3,11 @@
     height: 100%;
     background: white;
     position: relative;
+    transition-duration: 1s;
+}
+
+.Image-Text-Tile-Container:hover{
+    background: rgb(204, 204, 204);
 }
 
 .Image-Text-Tile-Wrapper{
