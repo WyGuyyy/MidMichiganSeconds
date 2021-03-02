@@ -182,7 +182,7 @@ class Home extends React.Component{
                         <button className="Home-PurchaseSeconds-Footer-Link" onClick={e => this.goToPicktime(e)}>Purchase Seconds</button>
                     </div>
                     <footer className="homeFooter" stlye={{height: this.state.footerHeight}}>
-                        <p className="Home-Footer-Text">copyright Jason Spaude and Wyatt Towne</p>
+                        <p className="Home-Footer-Text">&copy; Jason Spaude and Wyatt Towne</p>
                     </footer>
                 </section>
             </div>
