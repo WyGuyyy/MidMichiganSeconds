@@ -614,7 +614,7 @@ class Picktime extends React.Component{
                 <Popout hist={this.props.history}/>
                 <section className="Picktime-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Picktime-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                 </section>
 

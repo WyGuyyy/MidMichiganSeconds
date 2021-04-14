@@ -16,3 +16,13 @@
 .hamburgerContainer{
     padding-right: 2.5%;
 }
+
+.About-Link-Text{
+    color: white;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+
+.About-Link-Text:hover{
+    color: rgb(179, 179, 179);
+}

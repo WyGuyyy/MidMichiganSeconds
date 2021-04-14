@@ -22,8 +22,8 @@ class PaypalButton extends React.Component {
                 onApprove={(data, actions) => onApprove(data, actions)}
                 options={{
                   disableFunding: credit,
-                  //clientId: "AYLPU7smKqDi1Jgw27Xt8tKJxrB0CnteO7qH2P1gI3_E339dPWMmcBmZwmUZpvhuikyOcuOfTXcIQDmr" // Live Client ID
-                  clientId: "AYLPU7smKqDi1Jgw27Xt8tKJxrB0CnteO7qH2P1gI3_E339dPWMmcBmZwmUZpvhuikyOcuOfTXcIQDmr" //Sandbox Client ID
+                  clientId: "AYLPU7smKqDi1Jgw27Xt8tKJxrB0CnteO7qH2P1gI3_E339dPWMmcBmZwmUZpvhuikyOcuOfTXcIQDmr" // Live Client ID
+                  //clientId: "ARhqzB1bBjZ_gtoFaXgXNr_Q7wJvTQp6Z7TZn2Qe59C2djLpaICLBBJv7PJXxDU2tdO_AqMxyjh3FSuG" //Sandbox Client ID
                 }}
             />
         </div>

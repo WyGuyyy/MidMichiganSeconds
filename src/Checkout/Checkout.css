@@ -51,6 +51,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: 2px 2px 10px black;
 }
 
 .Checkout-Receipt-Box::-webkit-scrollbar {
@@ -97,7 +98,8 @@
     margin-top: 20px;
     position: relative;
     top: 100px;
-    transition-duration: .75s
+    transition-duration: .75s;
+    cursor: pointer;
 }
 
 .Checkout-Back-Button:hover{

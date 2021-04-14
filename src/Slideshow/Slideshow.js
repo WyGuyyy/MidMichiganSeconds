@@ -39,6 +39,8 @@ class Slideshow extends React.Component{
     goToLink(event){
         if(this.state.link.localeCompare("") != 0){
             window.location.href = this.state.link;
+        }else{
+            this.props.hist.push("/Picktime");
         }
     }
 

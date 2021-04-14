@@ -127,13 +127,13 @@ class Home extends React.Component{
                 <Popout hist={this.props.history}/>
                 <section className="Home-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Home-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                     <div className="Home-Slideshow-Wrapper" style={{height: this.state.slideshowHeight}}>
-                        <Slideshow />
+                        <Slideshow hist={this.props.history}/>
                     </div>
                 </section>
-                <section className="Home-Middle-Section" style={{height: this.state.middleSectionHeight}}>
+                <section id="Home-Middle-Section" className="Home-Middle-Section" style={{height: this.state.middleSectionHeight}}>
                     <div className="Home-WhatIs-Wrapper" style={{height: this.state.whatIsHeight, backgroundImage: "url(" + midmi + ")"}}>
                         <TextTile_TBT />
                     </div>

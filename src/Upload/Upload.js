@@ -571,7 +571,7 @@ class Upload extends React.Component{
                 <Popout hist={this.props.history}/>
                 <section className="Upload-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Upload-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                 </section>
                 <div className="Upload-Timeline-Wrapper">

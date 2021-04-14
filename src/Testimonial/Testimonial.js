@@ -41,7 +41,7 @@ class Testimonial extends React.Component{
                 <Popout hist={this.props.history}/>
                 <section className="Testimonial-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Testimonial-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                 </section>
                 <section className="Testimonial-Content-Section" style={{height: this.state.middleSectionHeight}}>

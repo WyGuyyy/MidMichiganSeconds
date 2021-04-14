@@ -24,6 +24,10 @@ class Header extends React.Component{
         
     }
 
+    scrollToAbout(){
+        document.getElementById("Home-Middle-Section").scrollIntoView({behavior: 'smooth'});
+    }
+
     hamClick(){
 
         if(this.state.hamSelected){        
@@ -73,7 +77,10 @@ class Header extends React.Component{
         return(
             <div className="headerContainer">
                 <div className="MMS-Title-Container">
-                    <MMS_Title />
+                    <MMS_Title hist={this.props.hist}/>
+                </div>
+                <div className="About-Link">
+                    <h2 className="About-Link-Text" onClick={(e) => this.scrollToAbout(e)}>About</h2>
                 </div>
                 <div className="hamburgerContainer">
                     <Hamburger hamClick={this.hamClick.bind(this)}/>

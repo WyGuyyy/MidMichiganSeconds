@@ -19,11 +19,15 @@ class MMS_Title extends React.Component{
         
     }
 
+    titleClick(event){
+        this.props.hist.push("/");
+    }
+
     //render the MMS_Title component to the DOM/screen
     render(){
 
         return(
-            <div className="MMS-Title-Wrapper">
+            <div className="MMS-Title-Wrapper" onClick={(e) => this.titleClick(e)}>
                 <h1 className="MMS-Title">MIDMICHIGAN SECONDS</h1>
             </div>
         );

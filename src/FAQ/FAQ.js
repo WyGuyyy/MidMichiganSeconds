@@ -36,7 +36,7 @@ class FAQ extends React.Component{
                 <Popout hist={this.props.history}/>
                 <section className="FAQ-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="FAQ-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                 </section>
                 <section className="FAQ-Content-Section" style={{height: this.state.middleSectionHeight}}>
@@ -60,7 +60,7 @@ class FAQ extends React.Component{
 
                         <div className="FAQ-Content-Upload FAQ-Content-1">
                             <h1 className="FAQ-Content-Upload-Title FAQ-Title">What type of pictures can I upload?</h1>
-                            <p className="FAQ-Content-Upload-Text FAQ-Text">Progressive pictures that build and play a scene over a few seconds are the best but overall the purpose of the page is to promote the mid-michigan area and tell its story so any pictures, images, or advertisement that fits the website them is great</p>
+                            <p className="FAQ-Content-Upload-Text FAQ-Text">Progressive pictures that build and play a scene over a few seconds are the best but overall the purpose of the page is to promote the mid-michigan area and tell its story so any pictures, images, or advertisement that fits the website theme is great</p>
                         </div>
 
                         <div className="FAQ-Content-Change FAQ-Content-2">
@@ -80,7 +80,7 @@ class FAQ extends React.Component{
 
                         <div className="FAQ-Content-URL FAQ-Content-1">
                             <h1 className="FAQ-Content-URL-Title FAQ-Title">What URL do I upload if I don't have one?</h1>
-                            <p className="FAQ-Content-URL-Text FAQ-Text">If you don’t have a URL you can upload a URL of a Facebook page or other social media website the supports the MidMichigan area. If you prefer not to do this, you can always link back to the MidMichigan seconds website again</p>
+                            <p className="FAQ-Content-URL-Text FAQ-Text">If you don’t have a URL you can upload a URL of a Facebook page or other social media website that supports the MidMichigan area. If you prefer not to do this, you can always link back to the MidMichigan seconds website again</p>
                         </div>
                     </div>
                 </section>

@@ -187,7 +187,7 @@ class Checkout extends React.Component{
                 <LoadingSpinner/>
                 <section className="Checkout-Top-Section" style={{height: this.state.topSectionHeight}}>
                     <div className="Checkout-Header-Wrapper" style={{height: this.state.headerHeight}}>
-                        <Header />
+                        <Header hist={this.props.history}/>
                     </div>
                 </section>
                 <div className="Picktime-Timeline-Wrapper">

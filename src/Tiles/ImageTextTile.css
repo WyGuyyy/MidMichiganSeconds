@@ -4,6 +4,7 @@
     background: white;
     position: relative;
     transition-duration: 1s;
+    cursor: pointer;
 }
 
 .Image-Text-Tile-Container:hover{
