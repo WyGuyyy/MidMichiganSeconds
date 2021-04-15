@@ -451,16 +451,69 @@ class Upload extends React.Component{
 
         var count = 0;
 
-        if(this.state.url.length == 1 && (this.state.url[0].trim().localeCompare("") == 0 || this.state.url[0].trim().localeCompare("Enter a URL...") == 0)){
+        /*if(this.state.url.length == 1 && (this.state.url[0].trim().localeCompare("") == 0 || this.state.url[0].trim().localeCompare("Enter a URL...") == 0)){
             alert("There is an empty URL field. Please fill all URL fields to continue.");
-        }
+        }*/
 
         for(count = 0; count < this.state.url.length; count++){
             var urlInput = this.state.url[count];
 
+            if(urlInput.trim().localeCompare("") == 0 || urlInput.trim().localeCompare("Enter a URL...") == 0){
+                urlInput = "https://midmichseconds.com/Picktime";
+            }
+            
             if(this.validURL(urlInput)){
 
-                if(urlInput.localeCompare("") == 0){
+                await fetch(urlInput, {method: 'head', mode: 'no-cors'}).then(function(response){ //Need to find out if url exists still
+                    if(response.type.localeCompare("opaque") == 0){
+                        urlExist = 1;
+                    }else{
+                        var index = newSelectedTimes.indexOf(times[count]);
+                        urlExist = 0;
+                        alert("The url " + urlInput + " was not detected as an existing webpage. Please enure the URL is valid and try again.");
+                        document.getElementById("time-item-" + count).style.background = "rgba(99, 0, 0, 1)";
+                        document.getElementById("time-item-" + count).children[0].style.color = "white";
+                        document.getElementById("photo-" + count).disabled = true;
+                        document.getElementById("url-" + count).disabled = true;
+                        if(index != -1){
+                            newSelectedTimes.splice(index, 1);
+                        }
+                    }
+                }).catch(function(){
+                    var index = newSelectedTimes.indexOf(times[count]);
+                    urlExist = 0;
+                    alert("The url " + urlInput + " was not detected as an existing webpage. Please enure the URL is valid and try again.");
+                    document.getElementById("time-item-" + count).style.background = "rgba(99, 0, 0, 1)";
+                    document.getElementById("time-item-" + count).children[0].style.color = "white";
+                    document.getElementById("photo-" + count).disabled = true;
+                    document.getElementById("url-" + count).disabled = true;
+                    if(index != -1){
+                        newSelectedTimes.splice(index, 1);
+                    }
+                });
+                //request.open("GET", urlInput, true);
+                //request.send();
+                //request.onload = function(){
+                //status = request.status;
+                //statusText = request.statusText;
+
+                //alert(request.response);
+
+                /*if(status == 200) //if(statusText == OK)
+                {
+                    urlExist = 1;
+                }
+                else{
+                    urlExist = 0;
+                    alert("The url " + urlInput + " was not detected as an existing webpage. Please enure the URL is valid and try again.");
+                }
+            }*/
+
+                if(urlExist == 0){
+                    break;
+                }
+
+                /*if(urlInput.localeCompare("") == 0){
                     urlExist = 0;
                     alert("There is an empty URL field. Please fill all URL fields to continue.");
                     break;
@@ -510,11 +563,11 @@ class Upload extends React.Component{
                     }
                 }*/
 
-                if(urlExist == 0){
+               /* if(urlExist == 0){
                     break;
                 }
 
-                }
+                }*/
         }else{
             alert("Invalid url: " + urlInput + ". URL must contain the full address, including the protocol (http/https) - (e.g. https://www.somesite.com)");
             urlExist = 0;

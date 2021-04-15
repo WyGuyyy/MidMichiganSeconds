@@ -12,3 +12,9 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
+
+@media(max-width: 375px){
+    .MMS-Title{
+        font-size: 20px;
+    }
+}

@@ -17,12 +17,29 @@
     padding-right: 2.5%;
 }
 
+.About-Link-Wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
 .About-Link-Text{
     color: white;
     cursor: pointer;
     transition-duration: .5s;
+    margin-right: 20px;
 }
 
 .About-Link-Text:hover{
     color: rgb(179, 179, 179);
+}
+
+@media(max-width: 375px){
+    .About-Link-Text{
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
 }

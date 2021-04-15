@@ -79,11 +79,13 @@ class Header extends React.Component{
                 <div className="MMS-Title-Container">
                     <MMS_Title hist={this.props.hist}/>
                 </div>
-                <div className="About-Link">
-                    <h2 className="About-Link-Text" onClick={(e) => this.scrollToAbout(e)}>About</h2>
-                </div>
-                <div className="hamburgerContainer">
-                    <Hamburger hamClick={this.hamClick.bind(this)}/>
+                <div className="About-Link-Wrapper">
+                    <div className="About-Link">
+                        <h2 className="About-Link-Text" onClick={(e) => this.scrollToAbout(e)}>About</h2>
+                    </div>
+                    <div className="hamburgerContainer">
+                        <Hamburger hamClick={this.hamClick.bind(this)}/>
+                    </div>
                 </div>
             </div>
         );
